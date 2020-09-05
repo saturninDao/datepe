@@ -24,9 +24,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/animations.css",
+              "src/assets/css/font-awesome.css",
+              "src/assets/css/main.css",
+              "src/assets/css/shop.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/compressed.js",
+              "src/assets/js/main.js",
+              "src/assets/js/switcher.js"
+            ]
           },
           "configurations": {
             "production": {
