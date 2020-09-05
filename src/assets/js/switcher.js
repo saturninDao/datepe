@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 		deleteAllCookiesHTML = '<span class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" title="Clear All Styles (Page will be reloaded)"></span>';
 	}
 	}
-/*  */
+/*  
 	var switcherHTML = '<div id="switcher">';
 		switcherHTML +=    '<div class="color_switcher_header">';
 		switcherHTML +=    		'<span class="fa fa-cog"></span>';
@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
 		switcherHTML +=    		'</ul>';
 		switcherHTML +=    	'</div>';
 		
-	/*	*/
+		*/
 
 		/*
 
@@ -80,10 +80,13 @@ jQuery(document).ready(function(){
 */
 
 
+/*
 		switcherHTML +=    '</div>';
 		switcherHTML +='</div>';
 
-		jQuery('body').append(switcherHTML);
+*/
+
+		//jQuery('body').append(switcherHTML);
 
 		//switcher toggle
 		jQuery('#switcher span[class="fa fa-cog"]').on('click', function(){

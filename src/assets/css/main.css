@@ -10495,8 +10495,8 @@ body.boxed {
 }
 
 .color-main4 {
-	border-color: #e8ac56;
-	color: #e8ac56 !important;
+	border-color: #cbae8e;
+	color: #cbae8e !important;
 }
 
 .color-dark {
@@ -16395,7 +16395,7 @@ a img.aligncenter {
 
 	.ds .sf-menu > li > a:hover,
 	.ds .sf-menu > li.active > a {
-		color: #e56778;
+		color: #cbae8e;
 	}
 
 	.ls .sf-menu > li > a {
