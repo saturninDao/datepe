@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -23,7 +24,6 @@ import { ContactService } from '../app/services/contact.service';
 import { HomeService } from '../app/services/home.service';
 import { ProprietairesService } from '../app/services/proprietaires.service';
 import { SallesService } from '../app/services/salles.service';
-
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
