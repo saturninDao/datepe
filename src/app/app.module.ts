@@ -18,6 +18,7 @@ import { ProrietairesComponent } from './prorietaires/prorietaires.component';
 import { SingleProprietaireComponent } from "./prorietaires/single-proprietaire/single-proprietaire.component";
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { MyConfig } from '../app/config/config';
 
 import { AuthGuardService } from '../app/services/auth-guard.service';
 import { AuthService } from '../app/services/auth.service';
@@ -25,6 +26,7 @@ import { ContactService } from '../app/services/contact.service';
 import { HomeService } from '../app/services/home.service';
 import { ProprietairesService } from '../app/services/proprietaires.service';
 import { SallesService } from '../app/services/salles.service';
+import { from } from 'rxjs';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     ContactService,
     HomeService,
     ProprietairesService,
-    SallesService
+    SallesService,
+    MyConfig
   ],
   bootstrap: [AppComponent]
 })

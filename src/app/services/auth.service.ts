@@ -13,6 +13,7 @@ export class AuthService {
           firebase.auth().createUserWithEmailAndPassword(email,password).then(
             ()=>{
               resolve();
+              console.log(resolve());
             },
             (error)=>{
               reject(error);
@@ -20,6 +21,8 @@ export class AuthService {
           );
       }
     );
+
+    
   }
   signInUser(email:string, password: string){
     return new Promise(
