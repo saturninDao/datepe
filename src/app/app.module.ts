@@ -38,7 +38,8 @@ const appRoutes: Routes = [
   { path: 'proprietaires', component: ProrietairesComponent},
   { path: 'proprietaires/view/:id', component: SingleProprietaireComponent},
   { path: 'contact', component: ContactComponent},
-  { path: '', component: HomeComponent}
+  { path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  { path: '**', redirectTo: 'accueil'}
 ]
 
 
