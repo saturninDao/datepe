@@ -1,9 +1,7 @@
 <section class="page_title pt-60 cs s-py-0">
     <div class="container">
         <div class="row">
-
             <div class="divider-90 d-none d-lg-block"></div>
-
             <div class="col-md-12 text-center">
                 <h1 class="bold">Inscription</h1>
                 <ol class="breadcrumb">
@@ -15,9 +13,7 @@
                     </li>
                 </ol>
             </div>
-
             <div class="divider-50 d-none d-md-block"></div>
-
         </div>
     </div>
 </section>
@@ -39,11 +35,12 @@
                                     href="shop-account-login.html">Confirm and log out</a>
                                 </div>
                                 -->
-                                <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-                                    {{errorMessage}}
-                                </div>
-                        <form class="woocommerce-EditAccountForm edit-account" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-                        <!--
+                            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                                {{errorMessage}}
+                            </div>
+                            <form class="woocommerce-EditAccountForm edit-account" [formGroup]="signUpForm"
+                                (ngSubmit)="onSubmit()">
+                                <!--
                             <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
                                 <label for="account_first_name">Prénom <span class="required">*</span>
                                 </label>
@@ -67,17 +64,13 @@
                             <div class="clear">
                             </div>
                         -->
-                            <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-                                <label for="account_email">Email <span class="required">*</span>
-                                </label>
-                                <input 
-                                    type="email" 
-                                    class="woocommerce-Input woocommerce-Input--email input-text" 
-                                    name="email" 
-                                    id="email" 
-                                    formControlName="email">
-                            </p>
-                            <!--
+                                <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                                    <label for="account_email">Email <span class="required">*</span>
+                                    </label>
+                                    <input type="email" class="woocommerce-Input woocommerce-Input--email input-text"
+                                        name="email" id="email" formControlName="email">
+                                </p>
+                                <!--
                             <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                 <label for="account_email">Téléphone <span class="required">*</span>
                                 </label>
@@ -89,7 +82,7 @@
                                     formControlName="account_phone">
                             </p>
                         -->
-                        <!--
+                                <!--
                             <div class="clear">
                             </div>
                         
@@ -104,21 +97,19 @@
                                     formControlName="account_adresse">
                             </p>
                         -->
-                            <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
-                                <label for="account_email">Mot de Passe <span class="required">*</span>
-                                </label>
-                                <input 
-                                    type="password" 
-                                    class="woocommerce-Input woocommerce-Input--password input-text" 
-                                    name="password" 
-                                    id="password" 
-                                    formControlName="password">
-                            </p>
-                            <div class="clear"></div>
-                            <p>
-                                <button type="submit" class="woocommerce-Button button" name="save_account_details">Créer le compte</button>
-                            </p>
-                        </form>
+                                <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
+                                    <label for="account_email">Mot de Passe <span class="required">*</span>
+                                    </label>
+                                    <input type="password"
+                                        class="woocommerce-Input woocommerce-Input--password input-text" name="password"
+                                        id="password" formControlName="password">
+                                </p>
+                                <div class="clear"></div>
+                                <p>
+                                    <button type="submit" class="woocommerce-Button button"
+                                        name="save_account_details">Créer le compte</button>
+                                </p>
+                            </form>
                         </div>
                     </div>
                     <!-- .entry-content -->
