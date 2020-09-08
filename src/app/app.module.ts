@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     SingleSalleComponent,
     SalleFormComponent,
     ProrietairesComponent,
-    SingleProprietaireComponent
+    SingleProprietaireComponent,
   ],
   imports: [
     BrowserModule,
