@@ -11,5 +11,5 @@ export class SingleSalleComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

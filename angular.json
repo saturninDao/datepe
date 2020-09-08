@@ -128,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "datepe"
+    }
+  },
+  "defaultProject": "datepe",
+  "cli": {
+    "analytics": false
+  }
 }
