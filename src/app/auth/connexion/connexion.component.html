@@ -35,11 +35,11 @@
                     <div class="entry-content">
                         <div class="woocommerce">
 
-                            <!--
-<div class="woocommerce-message">Are you sure you want to log out? <a
-    href="shop-account-login.html">Confirm and log out</a>
-</div>
--->
+                            
+                            <div class="woocommerce-message col-lg-6 messageDeConnexion">Vous n'avez pas de compte?<a
+                                routerLink="../../auth/inscription"> S'inscrire</a>
+                            </div>
+
                             <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
                                 {{errorMessage}}
                             </div>

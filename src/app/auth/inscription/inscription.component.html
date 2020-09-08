@@ -30,14 +30,15 @@
                     <!-- .entry-header -->
                     <div class="entry-content">
                         <div class="woocommerce">
-                            <!--
-                                <div class="woocommerce-message">Are you sure you want to log out? <a
-                                    href="shop-account-login.html">Confirm and log out</a>
-                                </div>
-                                -->
+
+                            <div class="woocommerce-message col-lg-6 messageDeConnexion">Vous avez déjà un coompte?<a
+                                routerLink="../../auth/connexion"> Se connecter</a>
+                            </div>
+
                             <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
                                 {{errorMessage}}
                             </div>
+
                             <form class="woocommerce-EditAccountForm edit-account" [formGroup]="signUpForm"
                                 (ngSubmit)="onSubmit()">
                                 <!--

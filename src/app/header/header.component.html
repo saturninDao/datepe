@@ -10,7 +10,8 @@
     <div class="widget widget_search">
         <form method="get" class="searchform search-form" action="http://webdesign-finder.com/">
             <div class="form-group">
-                <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+                <input type="text" value="" name="search" class="form-control" placeholder="Search keyword"
+                    id="modal-search-input">
             </div>
             <button type="submit" class="btn">Search</button>
         </form>
@@ -79,17 +80,29 @@
                     </div>
 
                     <div class="col-sm-12 col-md-2 text-md-right text-center" style="z-index: 9999;">
-                            
-                                <span class="icon-inline">
-                                    <a routerLink="auth/inscription">
-                                        <span class="icon-styled color-main">
-                                            <i class="fa fa-user color-main4"></i>
-                                        </span>
-                                        <span>
-                                            Se connecter
-                                        </span>
-                                    </a>
+
+                        <span class="icon-inline" *ngIf="!isAuth">
+                            <a routerLink="auth/connexion">
+                                <span class="icon-styled color-main">
+                                    <i class="fa fa-user color-main4"></i>
                                 </span>
+                                <span>
+                                    Se connecter
+                                </span>
+                            </a>
+                        </span>
+
+                        <span class="icon-inline" *ngIf="isAuth">
+                            <a style="cursor: pointer;" (click)="signOut()">
+                                <span class="icon-styled color-main">
+                                    <i class="fa fa-sign-out color-main4"></i>
+                                </span>
+                                <span>
+                                    Se déconnecter
+                                </span>
+                            </a>
+                        </span>
+
                     </div>
                 </div>
             </div>
@@ -109,8 +122,6 @@
                         <!-- main nav start -->
                         <nav class="top-nav">
                             <ul class="nav sf-menu">
-
-
                                 <li routerLinkActive="active">
                                     <a routerLink="accueil">Accueil</a>
                                 </li>
@@ -136,29 +147,28 @@
                                 </li>
                                 <!-- eof contacts -->
                             </ul>
-
-
                         </nav>
                         <!-- eof main nav -->
                     </div>
                     <div class="col-xl-2 col-lg-4 text-left text-xl-right d-none d-lg-block">
 
                         <ul class="top-includes">
-
-
                             <li>
                                 <span class="social-icons">
 
-                                    <a href="https://www.facebook.com/" class="fa fa-facebook border-icon round color-icon border-icon rounded-icon" title="facebook"></a>
-                                    <a href="https://twitter.com/" class="fa fa-twitter border-icon round color-icon border-icon rounded-icon" title="twitter"></a>
-                                    <a href="https://www.google.com/" class="fa fa-google border-icon round color-icon border-icon rounded-icon" title="google"></a>
+                                    <a href="https://www.facebook.com/"
+                                        class="fa fa-facebook border-icon round color-icon border-icon rounded-icon"
+                                        title="facebook"></a>
+                                    <a href="https://twitter.com/"
+                                        class="fa fa-twitter border-icon round color-icon border-icon rounded-icon"
+                                        title="twitter"></a>
+                                    <a href="https://www.google.com/"
+                                        class="fa fa-google border-icon round color-icon border-icon rounded-icon"
+                                        title="google"></a>
 
                                 </span>
                             </li>
-
-
                         </ul>
-
                     </div>
                 </div>
             </div>

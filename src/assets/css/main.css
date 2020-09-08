@@ -20257,3 +20257,11 @@ img.absolute_image {
 .checkbox-slider--b-flat input + span:before {
 	box-shadow: none;
 }
+
+/***** custom *****/
+
+.messageDeConnexion{
+	width: 50%;
+	margin: 0 auto 30px auto !important;
+
+}
