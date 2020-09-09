@@ -53,9 +53,9 @@ const appRoutes: Routes = [
   { path: 'admin/utilisateurs', component: UtilisateursComponent},
   { path: 'admin/compte', component: CompteComponent},
   { path: 'admin/lessalles/add-salles', component: AddSallesComponent},
-  { path: 'admin/lessalles/delete-salles/id', component: DeleteSallesComponent},
-  { path: 'admin/lessalles/edit-salles/view/id', component: EditSallesComponent},
-  { path: 'admin/lessalles/info-salles/view/id', component: InfoSallesComponent},
+  { path: 'admin/lessalles/delete-salles/:id', component: DeleteSallesComponent},
+  { path: 'admin/lessalles/edit-salles/view/:id', component: EditSallesComponent},
+  { path: 'admin/lessalles/info-salles/view/:id', component: InfoSallesComponent},
   { path: '', redirectTo: 'accueil', pathMatch: 'full'},
   { path: '**', redirectTo: 'accueil'}
 ]
