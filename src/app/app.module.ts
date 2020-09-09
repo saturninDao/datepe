@@ -36,6 +36,9 @@ import { HomeService } from '../app/services/home.service';
 import { ProprietairesService } from '../app/services/proprietaires.service';
 import { SallesService } from '../app/services/salles.service';
 import { from } from 'rxjs';
+import { EditUtilisateursComponent } from './admin/utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
+import { InfoUtilisateursComponent } from './admin/utilisateurs/info-utilisateurs/info-utilisateurs.component';
+import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisateurs/delete-utilisateurs.component';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -50,12 +53,15 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'admin/dashboard', component: DashboardComponent},
   { path: 'admin/lessalles', component: LesSallesComponent },
-  { path: 'admin/utilisateurs', component: UtilisateursComponent},
+  { path: 'admin/utilisateurs', component: UtilisateursComponent},  
+  { path: 'admin/utilisateurs/info-utilisateurs', component: InfoUtilisateursComponent},
+  { path: 'admin/utilisateurs/edit-utilisateurs', component: EditUtilisateursComponent},
+  { path: 'admin/utilisateurs/delete-utilisateurs', component: DeleteUtilisateursComponent},
   { path: 'admin/compte', component: CompteComponent},
   { path: 'admin/lessalles/add-salles', component: AddSallesComponent},
-  { path: 'admin/lessalles/delete-salles/id', component: DeleteSallesComponent},
-  { path: 'admin/lessalles/edit-salles/view/id', component: EditSallesComponent},
-  { path: 'admin/lessalles/info-salles/view/id', component: InfoSallesComponent},
+  { path: 'admin/lessalles/delete-salles/:id', component: DeleteSallesComponent},
+  { path: 'admin/lessalles/edit-salles/view/:id', component: EditSallesComponent},
+  { path: 'admin/lessalles/info-salles/view/:id', component: InfoSallesComponent},
   { path: '', redirectTo: 'accueil', pathMatch: 'full'},
   { path: '**', redirectTo: 'accueil'}
 ]
@@ -85,6 +91,9 @@ const appRoutes: Routes = [
     InfoSallesComponent,
     DeleteSallesComponent,
     AddSallesComponent,
+    EditUtilisateursComponent,
+    InfoUtilisateursComponent,
+    DeleteUtilisateursComponent,
   ],
   imports: [
     BrowserModule,

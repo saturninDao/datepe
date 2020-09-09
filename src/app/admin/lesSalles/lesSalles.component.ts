@@ -10,6 +10,7 @@ export class LesSallesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
