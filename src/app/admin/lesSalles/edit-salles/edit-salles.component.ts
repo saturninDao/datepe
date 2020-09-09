@@ -32,7 +32,7 @@ export class EditSallesComponent implements OnInit {
   }
 
 
-  onAddSalle() {
+  onEditSalle() {
     const type = this.signUpForm.get('type').value;
     const nombrePlace = this.signUpForm.get('nombrePlace').value;
     const etatSalle = "0";
