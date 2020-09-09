@@ -16,6 +16,15 @@ import { SingleSalleComponent } from './salles/single-salle/single-salle.compone
 import { SalleFormComponent } from './salles/salle-form/salle-form.component';
 import { ProrietairesComponent } from './prorietaires/prorietaires.component';
 import { SingleProprietaireComponent } from "./prorietaires/single-proprietaire/single-proprietaire.component";
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { LesSallesComponent } from './admin/lesSalles/lesSalles.component';
+import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
+import { CompteComponent } from './admin/compte/compte.component';
+import { EditSallesComponent } from './admin/lesSalles/edit-salles/edit-salles.component';
+import { InfoSallesComponent } from './admin/lesSalles/info-salles/info-salles.component';
+import { DeleteSallesComponent } from './admin/lesSalles/delete-salles/delete-salles.component';
+import { AddSallesComponent } from './admin/lesSalles/add-salles/add-salles.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MyConfig } from '../app/config/config';
@@ -38,6 +47,15 @@ const appRoutes: Routes = [
   { path: 'proprietaires', component: ProrietairesComponent},
   { path: 'proprietaires/view/:id', component: SingleProprietaireComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'admin/dashboard', component: DashboardComponent},
+  { path: 'admin/lessalles', component: LesSallesComponent },
+  { path: 'admin/utilisateurs', component: UtilisateursComponent},
+  { path: 'admin/compte', component: CompteComponent},
+  { path: 'admin/lessalles/add-salles', component: AddSallesComponent},
+  { path: 'admin/lessalles/delete-salles/id', component: DeleteSallesComponent},
+  { path: 'admin/lessalles/edit-salles/view/id', component: EditSallesComponent},
+  { path: 'admin/lessalles/info-salles/view/id', component: InfoSallesComponent},
   { path: '', redirectTo: 'accueil', pathMatch: 'full'},
   { path: '**', redirectTo: 'accueil'}
 ]
@@ -58,6 +76,15 @@ const appRoutes: Routes = [
     SalleFormComponent,
     ProrietairesComponent,
     SingleProprietaireComponent,
+    AdminComponent,
+    DashboardComponent,
+    LesSallesComponent,
+    UtilisateursComponent,
+    CompteComponent,
+    EditSallesComponent,
+    InfoSallesComponent,
+    DeleteSallesComponent,
+    AddSallesComponent,
   ],
   imports: [
     BrowserModule,
