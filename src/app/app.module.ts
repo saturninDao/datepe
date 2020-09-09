@@ -50,7 +50,7 @@ const appRoutes: Routes = [
   { path: 'proprietaires', component: ProrietairesComponent},
   { path: 'proprietaires/view/:id', component: SingleProprietaireComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
   { path: 'admin/dashboard', component: DashboardComponent},
   { path: 'admin/lessalles', component: LesSallesComponent },
   { path: 'admin/utilisateurs', component: UtilisateursComponent},  
