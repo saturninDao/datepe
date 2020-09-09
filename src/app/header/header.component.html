@@ -93,12 +93,12 @@
                         </span>
 
                         <span class="icon-inline" *ngIf="isAuth">
+                            <span>
+                                {{signedUser}}
+                            </span>
                             <a style="cursor: pointer;" (click)="signOut()">
                                 <span class="icon-styled color-main">
                                     <i class="fa fa-sign-out color-main4"></i>
-                                </span>
-                                <span>
-                                    Se déconnecter
                                 </span>
                             </a>
                         </span>
