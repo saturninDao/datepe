@@ -1,9 +1,7 @@
 <section class="page_title pt-60 cs s-py-0">
     <div class="container">
         <div class="row">
-
             <div class="divider-90 d-none d-lg-block"></div>
-
             <div class="col-md-12 text-center">
                 <h1 class="bold">Salles</h1>
                 <ol class="breadcrumb">
@@ -15,23 +13,17 @@
                     </li>
                 </ol>
             </div>
-
             <div class="divider-50 d-none d-md-block"></div>
-
         </div>
     </div>
 </section>
 
-
 <section class="ls s-pt-xl-80 s-pb-xl-120 s-pt-lg-40 s-pb-lg-110 s-pt-md-90 s-pb-md-150 s-pt-50 s-pb-130 c-gutter-60">
     <div class="container">
         <div class="row">
-
             <div class="d-none d-lg-block divider-70"></div>
-
             <main class="col-lg-7 col-xl-8">
                 <div class="columns-2">
-
                     <p class="woocommerce-result-count">
                         Afficher tous les 23 résultats</p>
                     <form class="woocommerce-ordering" method="get">
@@ -48,55 +40,30 @@
                     <ul class="products">
 
 
-                        <li class="product" routerLinkActive="active">
-                            <a routerLink="view/1">
+                        <li class="product" routerLinkActive="active" *ngFor="let salle of salles; let i=index" (click)="onViewSalle(i)">
+                            <a (click)="onViewSalle(i)" style="cursor: pointer;">
 
-                                <img alt="img" src="../../assets/images/shop/05.jpg">
+                                <img alt="img" [src]="salle.image.image1">
 
-                                <h2>Salle 1</h2>
+                                <h2>{{salle.nomSalle}}</h2>
                                 <div class="star-rating">
-                                    <span style="width:80%">Rated <strong
-                class="rating">4.00</strong> out of 5</span>
+                                    <span style="width:80%">Rated <strong class="rating">3.00</strong> out of 5</span>
                                 </div>
                                 <span class="price">
                                     <del>
                                         <span>
-                                            150.000<span>fcfa</span>
+                                            {{salle.prix}}<span>fcfa</span>
                                         </span>
                                     </del>
                                     <ins>
                                         <span>
-                                            120.000<span>fcfa</span>
+                                            {{salle.prix - salle.prix*0.1}}<span>fcfa</span>
                                         </span>
                                     </ins>
                                 </span>
                             </a>
-                            <a rel="nofollow" routerLink="salles/" class="button product_type_simple add_to_cart_button">je reserve</a>
-                        </li>
-                        <li class="product">
-                            <a routerLink="salles/view/1">
-
-                                <img alt="img" src="../../assets/images/shop/05.jpg">
-
-                                <h2>Salle 2</h2>
-                                <div class="star-rating">
-                                    <span style="width:80%">Rated <strong
-                                class="rating">4.00</strong> out of 5</span>
-                                </div>
-                                <span class="price">
-                                    <del>
-                                        <span>
-                                            150.000<span>fcfa</span>
-                                        </span>
-                                    </del>
-                                    <ins>
-                                        <span>
-                                            120.000<span>fcfa</span>
-                                        </span>
-                                    </ins>
-                                </span>
-                            </a>
-                            <a rel="nofollow" routerLink="salles/" class="button product_type_simple add_to_cart_button">je reserve</a>
+                            <a rel="nofollow" (click)="onViewSalle(i)"
+                                class="button product_type_simple add_to_cart_button">je reserve</a>
                         </li>
 
                     </ul>
@@ -109,10 +76,10 @@
                             <span class="page-numbers current">1</span>
                         </li>
                         <li>
-                            <a class="page-numbers" href="shop-right.html">2</a>
+                            <a class="page-numbers" href="">2</a>
                         </li>
                         <li>
-                            <a class="next page-numbers" href="shop-right.html">→</a>
+                            <a class="next page-numbers" href="">→</a>
                         </li>
                     </ul>
                 </nav>
@@ -131,7 +98,8 @@
                             Search for:
                         </label>
 
-                        <input type="search" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Recherche salle" value="" name="search">
+                        <input type="search" id="woocommerce-product-search-field-widget" class="search-field"
+                            placeholder="Recherche salle" value="" name="search">
                         <input type="submit" value="Search">
                     </form>
                 </div>
