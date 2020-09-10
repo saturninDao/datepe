@@ -93,9 +93,11 @@
                         </span>
 
                         <span class="icon-inline" *ngIf="isAuth">
-                            <span>
-                                {{signedUser}}
-                            </span>
+                            <a routerLink="/admin">
+                                <span>
+                                    {{signedUser}}
+                                </span>
+                            </a>
                             <a style="cursor: pointer;" (click)="signOut()">
                                 <span class="icon-styled color-main">
                                     <i class="fa fa-sign-out color-main4"></i>
