@@ -990,8 +990,8 @@ function windowLoadInit() {
 
 			})
 			//wrapping nav with container - uncomment if need
-			// .find('.flex-control-nav')
-			// .wrap('<div class="container nav-container"/>')
+			.find('.flex-control-nav')
+			.wrap('<div class="container nav-container"/>')
 		}); //.page_slider flex slider
 
 		$(".flexslider").each(function(index){
@@ -1004,7 +1004,7 @@ function windowLoadInit() {
 				animation: "fade",
 				useCSS: true,
 				controlNav: true,   
-				directionNav: false,
+				directionNav: true,
 				prevText: "",
 				nextText: "",
 				smoothHeight: false,
