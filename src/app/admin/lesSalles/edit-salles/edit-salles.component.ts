@@ -18,7 +18,6 @@ export class EditSallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    console.log('type');
   }
 
   initForm(){
@@ -32,7 +31,7 @@ export class EditSallesComponent implements OnInit {
   }
 
 
-  onEditSalle() {
+  onEditSalle(form: NgForm) {
     const type = this.signUpForm.get('type').value;
     const nombrePlace = this.signUpForm.get('nombrePlace').value;
     const etatSalle = "0";

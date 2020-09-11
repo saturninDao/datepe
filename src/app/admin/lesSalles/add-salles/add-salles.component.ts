@@ -18,7 +18,6 @@ export class AddSallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    console.log('type');
   }
 /*
   onFormSubmit(salleForm:NgForm){
@@ -31,23 +30,24 @@ export class AddSallesComponent implements OnInit {
 */
   
   initForm(){
-    this.signUpForm = this.formBuilder.group({
-      type: ['',[Validators.required]],
-      nombrePlace: ['',[Validators.required]],
-      prix: ['',[Validators.required]],
-      lieu: ['',[Validators.required]],
-      image: ['',[Validators.required]]
-    });
+  this.signUpForm = this.formBuilder.group({
+    type: ['',[Validators.required]],
+    nombrePlace: ['',[Validators.required]],
+    prix: ['',[Validators.required]],
+    lieu: ['',[Validators.required]],
+    image: ['',[Validators.required]]
+  });
   }
 
 
-  onAddSalle() {
+  onAddSalle(form: NgForm) {
     const type = this.signUpForm.get('type').value;
     const nombrePlace = this.signUpForm.get('nombrePlace').value;
     const etatSalle = "0";
     const prix = this.signUpForm.get('prix').value;
     const lieu = this.signUpForm.get('lieu').value;
     const image = this.signUpForm.get('image').value;
+    console.log(form);
   }
   
 
