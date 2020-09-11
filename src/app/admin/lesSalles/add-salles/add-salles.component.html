@@ -44,10 +44,11 @@
                                     </li>
                                 </ul>
                             </nav>
-
-                            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-                                {{errorMessage}}
+                        <!--
+                            <div class="alert alert-danger" role="alert">
+                           
                             </div>
+                        -->
 
                             <div class="woocommerce-MyAccount-content">
                                 <form [formGroup]="salleForm"
@@ -103,14 +104,45 @@
                                                 <input type="number" class="input-number " name="nombrePlace" id="nombrePlace" placeholder="" value="0" min="0" autocomplete="family-name" formControlName="nombrePlace">
                                             </p>
 
-                                            <!--
+                                            
                                             <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
-                                                <label for="shipping_state" class="">Image
+                                                <label for="shipping_state" class="">Image 1
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " value="" placeholder="" name="image" id="image" autocomplete="address-level1" formControlName="image">
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file1Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file1IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles1($event)" class="input-text" name="image1" id="image" formControlName="image1">
+                                                
                                             </p>
-                                            -->
+                                            
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 2
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file2Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file2IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles2($event)" class="input-text" name="image2" id="image2" formControlName="image2">
+                                            </p>
+                                           
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 3
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file3Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file3IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles3($event)" class="input-text" name="image3" id="image3" formControlName="image3">
+                                            </p>
+
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 4
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file4Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file4IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles4($event)" class="input-text" name="image4" id="image4" formControlName="image4">
+                                            </p>
+                                       
+                                            
 
                                             <p class="form-row form-row-wide address-field validate-postcode validate-required" id="shipping_postcode_field" data-priority="90" data-o_class="form-row form-row-wide address-field validate-required validate-postcode">
                                                 <label for="shipping_postcode" class="">Prix de la salle
@@ -129,7 +161,9 @@
 
 
                                         <p>
-                                            <input type="submit" class="woocommerce-Button button" name="Enregistrer" value="Enregistrer">
+                                            <button type="submit" class="woocommerce-Button button" name="Enregistrer" 
+                                            [disabled]="salleForm.invalid || file1IsUploading || file2IsUploading || file3IsUploading || file4IsUploading">
+                                                Enregistrer</button>
                                         </p>
                                     </div>
                                     

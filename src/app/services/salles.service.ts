@@ -22,8 +22,7 @@ export class SallesService {
 
   getSalles(){
 
-    firebase.database().ref().child('/salles')
-    // firebase.database().ref('/salles')
+    firebase.database().ref('/salles')
       .on('value',(data)=>{
         this.salles = data.val()?data.val():[];
         this.emitSalles();
@@ -63,4 +62,29 @@ export class SallesService {
     this.saveSalles();
     this.emitSalles();
   }
+  
+  uploadFile(file:File){
+    return new Promise(
+      (resolve,reject)=>{
+        const almostUniqueFileName = Date.now().toString();
+        const upload = firebase.storage().ref()
+        .child('images/'+almostUniqueFileName+file.name)
+        .put(file);
+        upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          ()=>{
+            console.log('chargement en cours...')
+          },
+          (error)=>{
+            console.log('Erreur de chargement' + error);
+            reject(error)
+          },
+          ()=>{
+            resolve(upload.snapshot.ref.getDownloadURL());
+          }
+          )
+      }
+    )
+  }
+
+
 }
