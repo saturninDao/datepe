@@ -26,18 +26,6 @@ export class SallesComponent implements OnInit,OnDestroy {
     this.sallesService.emitSalles();
   }
 
-  /*
-  onNewSalle(){
-    this.router.navigate(['/salles','new']);
-  }
-  
-
-  onDeleteSalle(salle:Salle){
-    this.sallesService.removeSalle(salle);
-  }
-
-  */
-
   onViewSalle(id:number){
     this.router.navigate(['/salles','view',id]);
   }

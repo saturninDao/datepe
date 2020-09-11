@@ -59,90 +59,112 @@
 
                             <div class="woocommerce-MyAccount-content">
 
-                                <div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
+                                <div
+                                    class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
                                     Listes des salles
                                 </div>
 
-                                <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
+                                <table
+                                    class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
                                     <thead>
                                         <tr>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><span class="nobr">Numero</span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date"><span class="nobr">Type </span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status"><span class="nobr">Etat</span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total"><span class="nobr">Prix</span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"><span class="nobr">Lieux</span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"><span class="nobr">Place max</span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"><span class="nobr"></span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"><span class="nobr"></span></th>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"><span class="nobr"></span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                                <span class="nobr">#</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                                <span class="nobr">Photo</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
+                                                <span class="nobr">Nom</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
+                                                <span class="nobr">Catégorie</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
+                                                <span class="nobr">Etat de la salle</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr">Lieu</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr"></span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr"></span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <a routerLink="../lessalles/add-salles" class="fa fa-plus"></a>
+                                            </th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order">
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
+                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order"
+                                            *ngFor="let salle of salles; let i=index">
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
+                                                data-title="Order">
                                                 <a href="shop-account-order-single.html">
-                                                    #1719 </a>
+                                                    #{{i}} </a>
 
                                             </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date">
-                                            Salle de fête
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
+                                                data-title="Order">
+                                                <img [src]="salle.image.image1" alt="logo">
                                             </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status" data-title="Status">
-                                                Libre
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total" data-title="Total">
-                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span> 25 000</span> FCFA
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
-                                                Lomé
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date"
+                                                data-title="Date">
+                                                {{salle.nomSalle}}
                                             </td>
                                             <td>
-                                                100
+                                                {{salle.categorie}}
                                             </td>
                                             <td>
-                                                <a routerLink="../lessalles/add-salles" class="fa fa-plus"></a> 
+                                                {{salle.etatSalle}}
                                             </td>
                                             <td>
-                                                <a routerLink="../lessalles/edit-salles/view/1" class="fa fa-pencil"></a> 
+                                                {{salle.lieu}}
+                                            </td>
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions"
+                                                data-title="Actions">
+                                                <a (click)="onViewSalle(i)" class="cursorP fa fa-info"></a>
                                             </td>
                                             <td>
-                                                <a href="#" class="fa-trash"></a> 
+                                                <a routerLink="../lessalles/edit-salles/view/{{i}}"
+                                                    class="fa fa-pencil"></a>
+                                            </td>
+                                            <td>
+                                                <a class="fa-trash cursorP" data-toggle="modal"
+                                                    data-target="#exampleModal"></a>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Confirmer
+                                                                    Suppression</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Souhaiter vous supprimer definitivement la salle
+                                                                {{salle.nomSalle }} ?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Annuler</button>
+                                                                <button data-dismiss="modal" (click)="onDeleteSalle(salle)" type="button"
+                                                                    class="btn btn-primary">Confirmer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
-
-                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order">
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
-                                                <a href="shop-account-order-single.html">
-                                                    #1719 </a>
-
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date">
-                                                Salle de réunion
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status" data-title="Status">
-                                                Occupé
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total" data-title="Total">
-                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span> 20 000</span> FCFA
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
-                                                Lomé
-                                            </td>
-                                            <td>
-                                                50
-                                            </td>
-                                            <td>
-                                                <a routerLink="../lessalles/add-salles" class="fa fa-plus"></a> 
-                                            </td>
-                                            <td>
-                                                <a routerLink="../lessalles/edit-salles/view/1" class="fa fa-pencil"></a> 
-                                            </td>
-                                            <td>
-                                                <a href="#" class="fa-trash"></a> 
-                                            </td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
 

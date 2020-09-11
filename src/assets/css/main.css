@@ -20265,3 +20265,7 @@ img.absolute_image {
 	margin: 0 auto 30px auto !important;
 
 }
+
+.cursorP{
+	cursor: pointer !important;
+}
