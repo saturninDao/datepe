@@ -44,17 +44,53 @@
                                     </li>
                                 </ul>
                             </nav>
-
+                             
+                            <!--
                             <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
                                 {{errorMessage}}
                             </div>
+                            -->
 
                             <div class="woocommerce-MyAccount-content">
-                                <form [formGroup]="signUpForm"
-                                 (ngSubmit)="onEditSalle()" >
-                                    <h5>MODIFIER LES INFORMATIONS D'UNE SALLE</h5>
+                                <form>
+                                    <h3>MODIFIER LES INFORMATIONS D'UNE SALLE</h3>
                                     <div class="woocommerce-address-fields">
                                         <div class="woocommerce-address-fields__field-wrapper">
+
+                                            <p class="form-row form-row-first validate-required" id="shipping_first_name_field" data-priority="10">
+                                                <label for="shipping_first_name" class="">Catégorie
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <select type="text" class="input-text " name="categorie" id="categorie" autofocus="autofocus" formControlName="categorie">
+                                                    <option selected type="text" value="Soirées d'entreprises / séminaires">Soirées d'entreprises / séminaires</option>
+                                                    <option type="text" value="Réceptions">Réceptions</option>
+                                                    <option type="text" value="Restaurants">Restaurants</option>
+                                                    <option type="text" value="Hôtels">Hôtels</option>
+                                                    <option type="text" value="Bars">Bars</option>
+                                                </select>
+                                            </p>
+
+                                            <p class="form-row form-row-first validate-required" id="shipping_first_name_field" data-priority="10">
+                                                <label for="shipping_first_name" class="">Etat Salle
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <input type="text" class="input-text " name="etatSalle" id="etatSalle" placeholder="" value="" autocomplete="given-name" autofocus="autofocus" formControlName="etatSalle">
+                                            </p>
+
+                                            <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
+                                                <label for="shipping_city" class="">Lieu
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <input type="text" class="input-text " name="lieu" id="lieu" placeholder="" value="" autocomplete="address-level2" formControlName="lieu">
+                                            </p>
+
+                                            <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
+                                                <label for="shipping_city" class="">Nom de la salle
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <input type="text" class="input-text " name="nomSalle" id="nomSalle" placeholder="" value="" autocomplete="address-level2" formControlName="nomSalle">
+                                            </p>
+
                                             <p class="form-row form-row-first validate-required" id="shipping_first_name_field" data-priority="10">
                                                 <label for="shipping_first_name" class="">Type de salle
                                                     <abbr class="required" title="required">*</abbr>
@@ -67,30 +103,67 @@
                                                 </label>
                                                 <input type="number" class="input-number " name="nombrePlace" id="nombrePlace" placeholder="" value="0" min="0" autocomplete="family-name" formControlName="nombrePlace">
                                             </p>
-                                            <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
-                                                <label for="shipping_city" class="">Lieu
+
+                                            
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 1
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " name="lieu" id="lieu" placeholder="" value="" autocomplete="address-level2" formControlName="lieu">
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file1Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file1IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles1($event)" class="input-text" name="image1" id="image" formControlName="image1">
+                                                
                                             </p>
                                             
                                             <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
-                                                <label for="shipping_state" class="">Image
+                                                <label for="shipping_state" class="">Image 2
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " value="" placeholder="" name="image" id="image" autocomplete="address-level1" formControlName="image">
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file2Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file2IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles2($event)" class="input-text" name="image2" id="image2" formControlName="image2">
                                             </p>
+                                           
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 3
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file3Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file3IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles3($event)" class="input-text" name="image3" id="image3" formControlName="image3">
+                                            </p>
+
+                                            <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
+                                                <label for="shipping_state" class="">Image 4
+                                                    <abbr class="required" title="required">*</abbr>
+                                                </label>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file4Uploaded">Fichier chargé</span>
+                                                <span style="margin-right: 20px;" class="text-succes" *ngIf="file4IsUploading">en cours de chargement...</span>
+                                                <input type="file" (change)="detectFiles4($event)" class="input-text" name="image4" id="image4" formControlName="image4">
+                                            </p>
+                                       
+                                            
+
                                             <p class="form-row form-row-wide address-field validate-postcode validate-required" id="shipping_postcode_field" data-priority="90" data-o_class="form-row form-row-wide address-field validate-required validate-postcode">
                                                 <label for="shipping_postcode" class="">Prix de la salle
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
                                                 <input type="number" class="input-number " name="prix" id="prix" placeholder="" value="0" min = "0" autocomplete="postal-code" formControlName="prix">
                                             </p>
+                                            <p class="form-row form-row-wide address-field validate-postcode validate-required" id="shipping_postcode_field" data-priority="90" data-o_class="form-row form-row-wide address-field validate-required validate-postcode">
+												<label for="comment">Description<span class="required">*</span>
+												</label>
+												<textarea id="description" name="description" cols="22" rows="4"
+													aria-required="true" required="" formControlName="description">
+												</textarea>
+											</p>
                                         </div>
 
 
                                         <p>
-                                            <input type="submit" class="woocommerce-Button button" name="Modifier" value="Modifier">
+                                            <button type="submit" class="woocommerce-Button button" name="Enregistrer" 
+                                            [disabled]="salleForm.invalid || file1IsUploading || file2IsUploading || file3IsUploading || file4IsUploading">
+                                                Enregistrer</button>
                                         </p>
                                     </div>
                                     

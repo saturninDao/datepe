@@ -137,26 +137,16 @@ export class AddSallesComponent implements OnInit {
         this.file4Uploaded = true;}
     )
   }
-
-
   detectFiles1(event){
     this.onUploadFile1(event.target.files[0]);
   }
-
   detectFiles2(event){
     this.onUploadFile2(event.target.files[0]);
   }
-
   detectFiles3(event){
     this.onUploadFile3(event.target.files[0]);
   }
-
   detectFiles4(event){
     this.onUploadFile4(event.target.files[0]);
   }
-
-
-
-  
-
 }

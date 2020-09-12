@@ -21,7 +21,6 @@ export class SallesService {
   }
 
   getSalles(){
-
     firebase.database().ref('/salles')
       .on('value',(data)=>{
         this.salles = data.val()?data.val():[];
