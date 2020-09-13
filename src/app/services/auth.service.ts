@@ -15,7 +15,7 @@ createNewUser(email:string, password: string){
         firebase.auth().createUserWithEmailAndPassword(email,password).then(
           ()=>{
             resolve();
-            console.log(resolve());
+            console.log("what happened here? => "+resolve());
           },
           (error)=>{
             reject(error);

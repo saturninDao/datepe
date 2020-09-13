@@ -5,6 +5,8 @@ import { SallesService } from 'src/app/services/salles.service';
 import { Salle } from 'src/app/models/salle.model';
 import { Proprietaire } from 'src/app/models/proprietaire.model';
 import { MesImages } from 'src/app/models/mesimages.model';
+import { AuthService } from 'src/app/services/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-salles',
@@ -14,6 +16,11 @@ import { MesImages } from 'src/app/models/mesimages.model';
 export class AddSallesComponent implements OnInit {
 
   salleForm: FormGroup;
+
+  signedUserAdresse: string;
+  signedUserEmail: string;
+  signedUserNomPrenom: string;
+  signedUserNumTel: string;
 
   imageParDefaut = 'https://firebasestorage.googleapis.com/v0/b/booksdao-dfe43.appspot.com/o/images%2F1599587492422sfrDElmh7i%20(3).png?alt=media&token=52e383b6-5aef-461c-841c-55b9b4935034';
   image1: string;
@@ -39,10 +46,24 @@ export class AddSallesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private sallesService: SallesService,
-              private router:Router) { }
+              private router:Router,
+              private authService: AuthService
+              ) { }
 
   ngOnInit(): void {
     this.initForm();
+    firebase.auth().onAuthStateChanged(
+      (user)=>{
+        if(user){
+          //this.isAuth = true;
+          this.signedUserEmail = user.email;
+          console.log(user);
+        }else{
+          //this.isAuth =false;
+        }
+        //console.log("utilisateur courant "+ firebase.auth().currentUser.displayName);
+      }
+    )
   }
 
   initForm(){
@@ -91,7 +112,10 @@ export class AddSallesComponent implements OnInit {
     const nomSalle = this.salleForm.get('nomSalle').value;
     const nombrePlace = this.salleForm.get('nombrePlace').value;
     const prix = this.salleForm.get('prix').value;
-    const proprio = new Proprietaire('Pas defini','Pas defini','Pas defini','Pas defini','Pas defini');
+    
+
+
+    const proprio = new Proprietaire('Pas defini','Pas defini',this.signedUserEmail,'Pas defini','Pas defini');
     const type = this.salleForm.get('type').value;
     const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,proprio,type);
     console.log(newSalle);

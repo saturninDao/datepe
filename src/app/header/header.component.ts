@@ -24,8 +24,12 @@ export class HeaderComponent implements OnInit {
         }else{
           this.isAuth =false;
         }
+        //console.log("utilisateur courant "+ firebase.auth().currentUser.displayName);
       }
     )
+
+  
+
   }
 
   signOut(){

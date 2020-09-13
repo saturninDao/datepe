@@ -9,7 +9,7 @@
                         <a routerLink="../../accueil">Accueil</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        Créer un compte
+                        Créer un compte pour publier vos salles
                     </li>
                 </ol>
             </div>
@@ -25,7 +25,7 @@
 
             <div class="d-none d-lg-block divider-70"></div>
 
-            <main class="offset-3 col-lg-6">
+            <main class="offset-2 col-lg-8">
                 <article>
                     <!-- .entry-header -->
                     <div class="entry-content">
@@ -34,12 +34,12 @@
                             <div class="woocommerce-message col-lg-12 ">Vous avez déjà un coompte?<a
                                 routerLink="../../auth/connexion"> Se connecter</a>
                             </div>
-                            <div class="woocommerce-message col-lg-12 ">                            
+                            <!-- <div class="woocommerce-message col-lg-12 ">                            
                                 <button (click)="onSubmitGoogle()" class="woocommerce-Button" role="button" style="text-transform:none">
                                 <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
                                 Se connecter avec google
                                 </button>
-                            </div>
+                            </div> -->
 
                             <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
                                 {{errorMessage}}
@@ -47,16 +47,16 @@
 
                             <form class="woocommerce-EditAccountForm edit-account" [formGroup]="signUpForm"
                                 (ngSubmit)="onSubmit()">
-                                <!--
+                                <!---->
                             <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
                                 <label for="account_first_name">Prénom <span class="required">*</span>
                                 </label>
                                 <input 
                                     type="text" 
                                     class="woocommerce-Input woocommerce-Input--text input-text" 
-                                    name="account_first_name" 
-                                    id="account_first_name"
-                                    formControlName="account_first_name">
+                                    name="prenom" 
+                                    id="prenom"
+                                    formControlName="prenom">
                             </p>
                             <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                 <label for="account_last_name">Nom <span class="required">*</span>
@@ -64,20 +64,20 @@
                                 <input 
                                     type="text" 
                                     class="woocommerce-Input woocommerce-Input--text input-text" 
-                                    name="account_last_name" 
-                                    id="account_last_name" 
-                                    formControlName="account_last_name">
+                                    name="nom" 
+                                    id="nom" 
+                                    formControlName="nom">
                             </p>
                             <div class="clear">
                             </div>
-                        -->
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                       <!---->
+                                <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
                                     <label for="account_email">Email <span class="required">*</span>
                                     </label>
                                     <input type="email" class="woocommerce-Input woocommerce-Input--email input-text"
                                         name="email" id="email" formControlName="email">
                                 </p>
-                                <!--
+                                <!---->
                             <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                 <label for="account_email">Téléphone <span class="required">*</span>
                                 </label>
@@ -86,24 +86,24 @@
                                     class="woocommerce-Input woocommerce-Input--email input-text" 
                                     name="account_phone" 
                                     id="account_phone" 
-                                    formControlName="account_phone">
+                                    formControlName="numTel">
                             </p>
-                        -->
-                                <!--
+                        <!---->
+                                <!---->
                             <div class="clear">
                             </div>
                         
-                            <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <label for="account_email">Adresse<span class="required">*</span>
                                 </label>
                                 <input 
-                                    type="email" 
+                                    type="text" 
                                     class="woocommerce-Input woocommerce-Input--email input-text" 
-                                    name="account_adresse" 
-                                    id="account_adresse" 
-                                    formControlName="account_adresse">
+                                    name="adresse" 
+                                    id="adresse" 
+                                    formControlName="adresse">
                             </p>
-                        -->
+                       <!---->
                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="account_email">Mot de Passe <span class="required">*</span>
                                     </label>
