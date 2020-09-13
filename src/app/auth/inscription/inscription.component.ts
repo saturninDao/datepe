@@ -42,4 +42,20 @@ export class InscriptionComponent implements OnInit {
     )
 
 }
+
+onSubmitGoogle(){
+  const email = this.signUpForm.get('email').value;
+  const password  = this.signUpForm.get('password').value;
+  this.authService.createNewUserWithGoogle(email,password).then(
+    ()=> {
+      this.router.navigate(['/accueil']);
+    },
+    (error)=> {
+      this.errorMessage = error;
+    }
+  )
+
+}
+
+
 }

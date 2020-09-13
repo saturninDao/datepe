@@ -19,7 +19,8 @@ export class HeaderComponent implements OnInit {
       (user)=>{
         if(user){
           this.isAuth = true;
-          this.signedUser = user.email;
+          this.signedUser = user.displayName?user.displayName:user.email;
+          console.log(user);
         }else{
           this.isAuth =false;
         }
