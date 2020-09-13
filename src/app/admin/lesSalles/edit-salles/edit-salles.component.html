@@ -52,7 +52,7 @@
                             -->
 
                             <div class="woocommerce-MyAccount-content">
-                                <form>
+                                <form [formGroup]="salleFormEdit" (ngSubmit)="onSaveSalle()">
                                     <h3>MODIFIER LES INFORMATIONS D'UNE SALLE</h3>
                                     <div class="woocommerce-address-fields">
                                         <div class="woocommerce-address-fields__field-wrapper">
@@ -61,12 +61,12 @@
                                                 <label for="shipping_first_name" class="">Catégorie
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <select type="text" class="input-text " name="categorie" id="categorie" autofocus="autofocus" formControlName="categorie">
-                                                    <option type="text" value="Soirées d'entreprises / séminaires" ng-selected="salle.categorie==Soirées d'entreprises / séminaires">Soirées d'entreprises / séminaires</option>
-                                                    <option type="text" value="Réceptions" ng-selected="salle.categorie==Réceptions">Réceptions</option>
-                                                    <option type="text" value="Restaurants" ng-selected="salle.categorie==Restaurants">Restaurants</option>
-                                                    <option type="text" value="Hôtels" ng-selected="salle.categorie==Hôtels"> Hôtels</option>
-                                                    <option type="text" value="Bars" ng-selected="salle.categorie==Bars">Bars</option>
+                                                <select type="text" class="input-text " name="categorie" id="categorie" autofocus="autofocus" formControlName="categorie" [(ngModel)]="salle.categorie">
+                                                    <option type="text" value="Soirées d'entreprises / séminaires" [selected]="salle.categorie=='Soirées d\'entreprises / séminaires'">Soirées d'entreprises / séminaires</option>
+                                                    <option type="text" value="Réceptions" [selected]="salle.categorie=='Réceptions'">Réceptions</option>
+                                                    <option type="text" value="Restaurants" [selected]="salle.categorie=='Restaurants'">Restaurants</option>
+                                                    <option type="text" value="Hôtels" [selected]="salle.categorie=='Hôtels'"> Hôtels</option>
+                                                    <option type="text" value="Bars" [selected]="salle.categorie=='Bars'">Bars</option>
                                                 </select>
                                             </p>
 
@@ -74,34 +74,34 @@
                                                 <label for="shipping_first_name" class="">Etat Salle
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " name="etatSalle" id="etatSalle" placeholder="" value="" autocomplete="given-name" autofocus="autofocus" formControlName="etatSalle">
+                                                <input [(ngModel)]="salle.etatSalle" type="text" class="input-text " name="etatSalle" id="etatSalle" placeholder="" [value]="salle.etatSalle" autocomplete="given-name" autofocus="autofocus" formControlName="etatSalle">
                                             </p>
 
                                             <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
                                                 <label for="shipping_city" class="">Lieu
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " name="lieu" id="lieu" placeholder="" value="" autocomplete="address-level2" formControlName="lieu">
+                                                <input [(ngModel)]="salle.lieu" type="text" class="input-text " name="lieu" id="lieu" placeholder="" [value]="salle.lieu" autocomplete="address-level2" formControlName="lieu">
                                             </p>
 
                                             <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
                                                 <label for="shipping_city" class="">Nom de la salle
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " name="nomSalle" id="nomSalle" placeholder="" value="" autocomplete="address-level2" formControlName="nomSalle">
+                                                <input [(ngModel)]="salle.nomSalle" type="text" class="input-text " name="nomSalle" id="nomSalle" placeholder="" [value]="salle.lieu" autocomplete="address-level2" formControlName="nomSalle">
                                             </p>
 
                                             <p class="form-row form-row-first validate-required" id="shipping_first_name_field" data-priority="10">
                                                 <label for="shipping_first_name" class="">Type de salle
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="text" class="input-text " name="type" id="type" placeholder="" value="" autocomplete="given-name" autofocus="autofocus" formControlName="type">
+                                                <input [(ngModel)]="salle.type" type="text" class="input-text " name="type" id="type" placeholder="" [value]="salle.type" autocomplete="given-name" autofocus="autofocus" formControlName="type">
                                             </p>
                                             <p class="form-row form-row-last validate-required" id="shipping_last_name_field" data-priority="20">
                                                 <label for="shipping_last_name" class="">Nombre de place
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="number" class="input-number " name="nombrePlace" id="nombrePlace" placeholder="" value="0" min="0" autocomplete="family-name" formControlName="nombrePlace">
+                                                <input [(ngModel)]="salle.nombrePlace" type="number" class="input-number " name="nombrePlace" id="nombrePlace" placeholder="" [value]="salle.nombrePlace" min="0" autocomplete="family-name" formControlName="nombrePlace">
                                             </p>
 
                                             
@@ -111,7 +111,7 @@
                                                 </label>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file1Uploaded">Fichier chargé</span>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file1IsUploading">en cours de chargement...</span>
-                                                <input type="file" (change)="detectFiles1($event)" class="input-text" name="image1" id="image" formControlName="image1">
+                                                <input type="file" (change)="detectFiles1($event)" class="input-text" name="image1" id="image">
                                                 
                                             </p>
                                             
@@ -121,7 +121,7 @@
                                                 </label>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file2Uploaded">Fichier chargé</span>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file2IsUploading">en cours de chargement...</span>
-                                                <input type="file" (change)="detectFiles2($event)" class="input-text" name="image2" id="image2" formControlName="image2">
+                                                <input type="file" (change)="detectFiles2($event)" class="input-text" name="image2" id="image2">
                                             </p>
                                            
                                             <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
@@ -130,7 +130,7 @@
                                                 </label>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file3Uploaded">Fichier chargé</span>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file3IsUploading">en cours de chargement...</span>
-                                                <input type="file" (change)="detectFiles3($event)" class="input-text" name="image3" id="image3" formControlName="image3">
+                                                <input type="file" (change)="detectFiles3($event)" class="input-text" name="image3" id="image3">
                                             </p>
 
                                             <p class="form-row form-row-wide address-field validate-state validate-required" id="shipping_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state">
@@ -139,7 +139,7 @@
                                                 </label>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file4Uploaded">Fichier chargé</span>
                                                 <span style="margin-right: 20px;" class="text-succes" *ngIf="file4IsUploading">en cours de chargement...</span>
-                                                <input type="file" (change)="detectFiles4($event)" class="input-text" name="image4" id="image4" formControlName="image4">
+                                                <input type="file" (change)="detectFiles4($event)" class="input-text" name="image4" id="image4">
                                             </p>
                                        
                                             
@@ -148,13 +148,13 @@
                                                 <label for="shipping_postcode" class="">Prix de la salle
                                                     <abbr class="required" title="required">*</abbr>
                                                 </label>
-                                                <input type="number" class="input-number " name="prix" id="prix" placeholder="" value="0" min = "0" autocomplete="postal-code" formControlName="prix">
+                                                <input [(ngModel)]="salle.prix" type="number" class="input-number " name="prix" id="prix" placeholder="" [value]="salle.prix" min = "0" autocomplete="postal-code" formControlName="prix">
                                             </p>
                                             <p class="form-row form-row-wide address-field validate-postcode validate-required" id="shipping_postcode_field" data-priority="90" data-o_class="form-row form-row-wide address-field validate-required validate-postcode">
 												<label for="comment">Description<span class="required">*</span>
 												</label>
-												<textarea id="description" name="description" cols="22" rows="4"
-													aria-required="true" required="" formControlName="description">
+												<textarea [(ngModel)]="salle.description" [value]="salle.description" id="description" name="description" cols="22" rows="4"
+                                                    aria-required="true" required="" formControlName="description">
 												</textarea>
 											</p>
                                         </div>
@@ -162,7 +162,7 @@
 
                                         <p>
                                             <button type="submit" class="woocommerce-Button button" name="Enregistrer" 
-                                            [disabled]="salleForm.invalid || file1IsUploading || file2IsUploading || file3IsUploading || file4IsUploading">
+                                            [disabled]="salleFormEdit.invalid  || file1IsUploading || file2IsUploading || file3IsUploading || file4IsUploading">
                                                 Enregistrer</button>
                                         </p>
                                     </div>

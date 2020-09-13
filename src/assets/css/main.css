@@ -20269,3 +20269,16 @@ img.absolute_image {
 .cursorP{
 	cursor: pointer !important;
 }
+
+
+
+button:disabled,
+button[disabled],
+button:disabled:hover,
+button[disabled]:hover
+{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+} 

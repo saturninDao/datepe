@@ -20,6 +20,10 @@ export class SallesService {
     firebase.database().ref('/salles').set(this.salles);
   }
 
+  updateSalle(id,salleToModify:Salle){
+    firebase.database().ref('/salles/'+id).set(salleToModify);
+  }
+
   getSalles(){
     firebase.database().ref('/salles')
       .on('value',(data)=>{
