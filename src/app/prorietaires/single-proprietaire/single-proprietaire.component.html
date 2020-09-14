@@ -14,7 +14,7 @@
                         <a routerLink = "../../../proprietaires">Propriétaires</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        Propriétaire membre
+                        {{proprio.nomPrenom}}
                     </li>
                 </ol>
             </div>
@@ -40,53 +40,27 @@
                             <div class="item-content">
                                 <h5>
 
-                                    SHELLEY PHILLIPS
+                                    {{proprio.nomPrenom}}
                                 </h5>
                                 <p class="small-text color-main">
-                                    BUSINESS MENTOR
+                                    PRESTATAIRE DE SERVICE
                                 </p>
                                 <span class="social-icons">
-                                    <a href="#" class="fa fa-facebook border-icon round color-icon border-icon rounded-icon" title="facebook"></a>
-                                    <a href="#" class="fa fa-twitter border-icon round color-icon border-icon rounded-icon" title="twitter"></a>
-                                    <a href="#" class="fa fa-google border-icon round color-icon border-icon rounded-icon" title="google"></a>
+                                    <a class="fa fa-facebook border-icon round color-icon border-icon rounded-icon" title="facebook"></a>
+                                    <a class="fa fa-twitter border-icon round color-icon border-icon rounded-icon" title="twitter"></a>
+                                    <a class="fa fa-google border-icon round color-icon border-icon rounded-icon" title="google"></a>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6">
-                        <p>
-                            Jerky strip steak pork ham hock. Jowl turkey doner sausage andouille ribs salami short loin turducken ribeye. Doner strip steak ham hock pork pastrami picanha boudin.
-                        </p>
-                        <p>Alcatra ham fatback, sirloin ball tip pastrami jowl tail corned beef biltong beef chicken landjaeger. Beef ribs chuck pancetta cow, tenderloin flank ham hock spare ribs andouille ham bacon sausage bresaola sausage ribs burgdoggen.Pig meatloaf swine leberkas pancetta sirloin ball tip chuck cupim drumstick brisket prosciutto.</p>
-                        <ul class="list">
-                            <li>
-                                <a href="services.html">Lorem ipsum dolor sit amet</a>
-                            </li>
-                            <li>
-                                <a href="services.html">Sint animi non ut sed</a>
-                            </li>
-                            <li>
-                                <a href="services.html">Eaque blanditiis nemo</a>
-                            </li>
-                            <li>
-                                <a href="services.html">Amet, consectetur adipisicing</a>
-                            </li>
-                            <li>
-                                <a href="services.html">Blanditiis nemo quaerat</a>
-                            </li>
-                        </ul>
-
-                        <p>Doner frankfurter ball tip capicola tri-tip. Shank pork loin beef ribs salami kielbasa. Chuck sirloin turkey fatback kevin short ribs pig ribeye meatloaf biltong porchetta shank ham hock ball tip. Spare ribs burgdoggen pork leberkas short loin.</p>
                         <!-- tabs start -->
                         <ul class="nav nav-tabs mt-40" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="tab01" data-toggle="tab" href="#tab01_pane" role="tab" aria-controls="tab01_pane" aria-expanded="true">Biography</a>
+                                <a class="nav-link active" id="tab01" data-toggle="tab" href="#tab01_pane" role="tab" aria-controls="tab01_pane" aria-expanded="true">Biographie & Infos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab02" data-toggle="tab" href="#tab02_pane" role="tab" aria-controls="tab02_pane">Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab03" data-toggle="tab" href="#tab03_pane" role="tab" aria-controls="tab03_pane">Send</a>
+                                <a class="nav-link" id="tab03" data-toggle="tab" href="#tab03_pane" role="tab" aria-controls="tab03_pane">Contacter</a>
                             </li>
 
                         </ul>
@@ -94,59 +68,34 @@
 
                             <div class="tab-pane fade show active" id="tab01_pane" role="tabpanel" aria-labelledby="tab01">
 
-                                <h5>Biography:</h5>
+                                <h5>Biographie & Infos:</h5>
                                 <p>
                                     Ut wisi enim ad minim veniaquis nostrud exetation ullamcorper suscipit lobortis nisl
                                     ut aliquip ex ea commodo consequat. Dutem vel eum iriure dolor in hendrerit in
                                     vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
                                     at vero eros et accumsan et iusto odio dignissim qui blandit.
                                 </p>
-                                <h5>Professional Life:</h5>
-                                <p>
-                                    Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                                    vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                                    dignissim qui blandit. Praesent luptatum zzril delenit augue duis dolore te feugait
-                                    nulla facilisi.
-                                </p>
 
-                            </div>
-
-                            <div class="tab-pane fade" id="tab02_pane" role="tabpanel" aria-labelledby="tab02">
-
-                                <p>
-                                    Dutem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                                    vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                                    dignissim qui blandit. Praesent luptatum zzril delenit augue duis dolore te feugait
-                                    nulla facilisi.
-                                </p>
-
-                                <span class="small-text">Consulting</span>
+                                <span class="small-text">Adresse</span>
                                 <div class="progress">
-                                    <div class="progress-bar bg-maincolor" role="progressbar" data-transitiongoal="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
+                                    <div class="progress-bar bg-maincolor" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span>{{proprio.adresse}}</span>
                                     </div>
                                 </div>
 
-                                <span class="small-text">Finance</span>
+                                <span class="small-text">Email</span>
                                 <div class="progress">
-                                    <div class="progress-bar bg-maincolor2" role="progressbar" data-transitiongoal="98" aria-valuemin="0" aria-valuemax="100">
-                                        <span>98%</span>
+                                    <div class="progress-bar bg-maincolor2" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span>{{proprio.email}}</span>
                                     </div>
                                 </div>
 
-                                <span class="small-text">Marketing</span>
+                                <span class="small-text">Téléphone</span>
                                 <div class="progress">
-                                    <div class="progress-bar bg-maincolor3" role="progressbar" data-transitiongoal="93" aria-valuemin="0" aria-valuemax="100">
-                                        <span>93%</span>
+                                    <div class="progress-bar bg-maincolor3" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span>{{proprio.numTel}}</span>
                                     </div>
                                 </div>
-
-                                <p><br>
-                                    Ut wisi enim ad minim veniaquis nostrud exetation ullamcorper suscipit lobortis nisl
-                                    ut aliquip ex ea commodo consequat. Dutem vel eum iriure dolor in hendrerit in
-                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                                    at vero eros et accumsan et iusto odio dignissim qui blandit.
-                                </p>
 
                             </div>
 
@@ -155,7 +104,7 @@
                                 <form class="contact-form" method="post" action="http://webdesign-finder.com/">
                                     <p class="contact-form-name">
 
-                                        <input type="text" aria-required="true" size="30" value="" name="name" class="form-control" placeholder="Name">
+                                        <input type="text" aria-required="true" size="30" value="" name="name" class="form-control" placeholder="Nom">
                                     </p>
                                     <p class="contact-form-email">
 
@@ -165,7 +114,7 @@
                                         <textarea aria-required="true" rows="8" cols="45" name="message" class="form-control" placeholder="Message"></textarea>
                                     </p>
                                     <p class="contact-form-submit">
-                                        <button type="submit" name="contact_submit" class="btn btn-maincolor">Send Message
+                                        <button type="submit" name="contact_submit" class="btn btn-maincolor">Envoyer
                                         </button>
                                     </p>
                                 </form>
@@ -174,29 +123,6 @@
 
                         </div>
                         <!-- tabs end-->
-
-
-                        <p>
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet rem ipsum
-                            dolorsit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt.
-                        </p>
-
-                        <blockquote>
-                            <p>
-                                Right after moving in <strong>QHab</strong> became a huge resource for us in our growth efforts. We found that the type of companies here were all in growth mode which creates a really fun energy and a place.
-                            </p>
-                            <footer>
-                                STEVEN BAUER
-                                <cite>COWORKING MEMBER</cite>
-                            </footer>
-                        </blockquote>
-
-                        <p>
-                            Ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-                            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                            dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        </p>
 
                     </div>
                 </div>
