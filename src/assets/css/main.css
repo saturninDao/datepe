@@ -314,7 +314,7 @@ a {
 }
 
 a:hover {
-	color: #54c1c4;
+	color: #cbae8e;
 	text-decoration: none;
 	transition: all 0.15s linear 0s;
 }
@@ -20257,3 +20257,28 @@ img.absolute_image {
 .checkbox-slider--b-flat input + span:before {
 	box-shadow: none;
 }
+
+/***** custom *****/
+
+.messageDeConnexion{
+	width: 50%;
+	margin: 0 auto 30px auto !important;
+
+}
+
+.cursorP{
+	cursor: pointer !important;
+}
+
+
+
+button:disabled,
+button[disabled],
+button:disabled:hover,
+button[disabled]:hover
+{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+} 

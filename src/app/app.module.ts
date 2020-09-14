@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
+import { AppRoutingModule } from '../app/app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -15,8 +16,18 @@ import { SingleSalleComponent } from './salles/single-salle/single-salle.compone
 import { SalleFormComponent } from './salles/salle-form/salle-form.component';
 import { ProrietairesComponent } from './prorietaires/prorietaires.component';
 import { SingleProprietaireComponent } from "./prorietaires/single-proprietaire/single-proprietaire.component";
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { LesSallesComponent } from './admin/lesSalles/lesSalles.component';
+import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
+import { CompteComponent } from './admin/compte/compte.component';
+import { EditSallesComponent } from './admin/lesSalles/edit-salles/edit-salles.component';
+import { InfoSallesComponent } from './admin/lesSalles/info-salles/info-salles.component';
+import { DeleteSallesComponent } from './admin/lesSalles/delete-salles/delete-salles.component';
+import { AddSallesComponent } from './admin/lesSalles/add-salles/add-salles.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { MyConfig } from '../app/config/config';
 
 import { AuthGuardService } from '../app/services/auth-guard.service';
 import { AuthService } from '../app/services/auth.service';
@@ -24,6 +35,10 @@ import { ContactService } from '../app/services/contact.service';
 import { HomeService } from '../app/services/home.service';
 import { ProprietairesService } from '../app/services/proprietaires.service';
 import { SallesService } from '../app/services/salles.service';
+import { from } from 'rxjs';
+import { EditUtilisateursComponent } from './admin/utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
+import { InfoUtilisateursComponent } from './admin/utilisateurs/info-utilisateurs/info-utilisateurs.component';
+import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisateurs/delete-utilisateurs.component';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -35,7 +50,20 @@ const appRoutes: Routes = [
   { path: 'proprietaires', component: ProrietairesComponent},
   { path: 'proprietaires/view/:id', component: SingleProprietaireComponent},
   { path: 'contact', component: ContactComponent},
-  { path: '', component: HomeComponent}
+  { path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
+  { path: 'admin/dashboard', canActivate:[AuthGuardService], component: DashboardComponent},
+  { path: 'admin/lessalles', canActivate:[AuthGuardService], component: LesSallesComponent },
+  { path: 'admin/utilisateurs', canActivate:[AuthGuardService], component: UtilisateursComponent},  
+  { path: 'admin/utilisateurs/info-utilisateurs', canActivate:[AuthGuardService], component: InfoUtilisateursComponent},
+  { path: 'admin/utilisateurs/edit-utilisateurs', canActivate:[AuthGuardService], component: EditUtilisateursComponent},
+  { path: 'admin/utilisateurs/delete-utilisateurs', canActivate:[AuthGuardService], component: DeleteUtilisateursComponent},
+  { path: 'admin/compte', canActivate:[AuthGuardService], component: CompteComponent},
+  { path: 'admin/lessalles/add-salles', canActivate:[AuthGuardService], component: AddSallesComponent},
+  { path: 'admin/lessalles/delete-salles/:id', canActivate:[AuthGuardService], component: DeleteSallesComponent},
+  { path: 'admin/lessalles/edit-salles/view/:id', canActivate:[AuthGuardService], component: EditSallesComponent},
+  { path: 'admin/lessalles/info-salles/view/:id', canActivate:[AuthGuardService], component: InfoSallesComponent},
+  { path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  { path: '**', redirectTo: 'accueil'}
 ]
 
 
@@ -53,14 +81,27 @@ const appRoutes: Routes = [
     SingleSalleComponent,
     SalleFormComponent,
     ProrietairesComponent,
-    SingleProprietaireComponent
+    SingleProprietaireComponent,
+    AdminComponent,
+    DashboardComponent,
+    LesSallesComponent,
+    UtilisateursComponent,
+    CompteComponent,
+    EditSallesComponent,
+    InfoSallesComponent,
+    DeleteSallesComponent,
+    AddSallesComponent,
+    EditUtilisateursComponent,
+    InfoUtilisateursComponent,
+    DeleteUtilisateursComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     AuthGuardService,
@@ -68,7 +109,8 @@ const appRoutes: Routes = [
     ContactService,
     HomeService,
     ProprietairesService,
-    SallesService
+    SallesService,
+    MyConfig
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,182 @@
+<section class="page_title pt-60 cs s-py-0">
+    <div class="container">
+        <div class="row">
+
+            <div class="divider-90 d-none d-lg-block"></div>
+
+            <div class="col-md-12 text-center">
+                <h1 class="bold">Admin</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="../../admin">Admin</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        salles
+                    </li>
+                </ol>
+            </div>
+
+            <div class="divider-50 d-none d-md-block"></div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="ls s-pt-xl-80 s-pb-xl-120 s-pt-lg-40 s-pb-lg-110 s-pt-md-90 s-pb-md-150 s-pt-50 s-pb-130">
+    <div class="container">
+        <div class="row">
+
+            <div class="d-none d-lg-block divider-70"></div>
+
+            <main class="col-lg-12">
+                <article id="post-1708" class="post-1708 page type-page status-publish hentry">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Les salles</h1>
+                    </header><!-- .entry-header -->
+                    <div class="entry-content">
+                        <div class="woocommerce">
+                            <nav class="woocommerce-MyAccount-navigation">
+                                <ul>
+                                    <li>
+                                        <a routerLink="../dashboard">Tableau de bord</a>
+                                    </li>
+                                    <li class="is-active">
+                                        <a routerLink="../lessalles">Salles</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="../utilisateurs">Utilisateurs</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="../compte">Compte</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="shop-account-login.html">Se déconnecter</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
+                            <div class="woocommerce-MyAccount-content">
+
+                                <div
+                                    class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
+                                    Listes des salles
+                                </div>
+
+                                <table
+                                    class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                                <span class="nobr">#</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                                <span class="nobr">Photo</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
+                                                <span class="nobr">Nom</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
+                                                <span class="nobr">Catégorie</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
+                                                <span class="nobr">Etat de la salle</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr">Lieu</span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr"></span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <span class="nobr"></span></th>
+                                            <th
+                                                class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                <a routerLink="../lessalles/add-salles" class="fa fa-plus"></a>
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order"
+                                            *ngFor="let salle of salles; let i=index">
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
+                                                data-title="Order">
+                                                <a href="shop-account-order-single.html">
+                                                    #{{i}} </a>
+
+                                            </td>
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
+                                                data-title="Order">
+                                                <img [src]="salle.image.image1" alt="logo">
+                                            </td>
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date"
+                                                data-title="Date">
+                                                {{salle.nomSalle}}
+                                            </td>
+                                            <td>
+                                                {{salle.categorie}}
+                                            </td>
+                                            <td>
+                                                {{salle.etatSalle}}
+                                            </td>
+                                            <td>
+                                                {{salle.lieu}}
+                                            </td>
+                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions"
+                                                data-title="Actions">
+                                                <a (click)="onViewSalle(i)" class="cursorP fa fa-info"></a>
+                                            </td>
+                                            <td>
+                                                <a routerLink="../lessalles/edit-salles/view/{{i}}"
+                                                    class="fa fa-pencil"></a>
+                                            </td>
+                                            <td>
+                                                <a class="fa-trash cursorP" data-toggle="modal"
+                                                    data-target="#exampleModal"></a>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Confirmer
+                                                                    Suppression</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Souhaiter vous supprimer definitivement la salle
+                                                                {{salle.nomSalle }} ?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Annuler</button>
+                                                                <button data-dismiss="modal" (click)="onDeleteSalle(salle)" type="button"
+                                                                    class="btn btn-primary">Confirmer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div><!-- .entry-content -->
+                </article>
+
+            </main>
+
+            <div class="d-none d-lg-block divider-70"></div>
+        </div>
+
+    </div>
+</section>
