@@ -27,8 +27,8 @@ export class UtilisateursComponent implements OnInit {
     this.proprioService.emitProprios();
   }
 
-  onViewSalle(id:number){
-    this.router.navigate(['/salles','view',id]);
+  onViewProprio(id:number){
+    this.router.navigate(['/proprietaires','view',id]);
   }
 
   ngOnDestroy(){
