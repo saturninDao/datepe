@@ -51,9 +51,9 @@ export class InscriptionComponent implements OnInit {
 
     this.authService.createNewUser(email,password).then(
       ()=> {
-        this.proprioService.createNewProprio(newProprietaire);
-       this.router.navigate(['/accueil']);
-       console.log(newProprietaire);
+        const retourKey = this.proprioService.createNewProprio(newProprietaire);
+      // this.router.navigate(['/accueil']);
+       console.log(retourKey);
       },
       (error)=> {
         this.errorMessage = error;

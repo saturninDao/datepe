@@ -5,8 +5,9 @@ import { SallesService } from 'src/app/services/salles.service';
 import { Salle } from 'src/app/models/salle.model';
 import { Proprietaire } from 'src/app/models/proprietaire.model';
 import { MesImages } from 'src/app/models/mesimages.model';
-import { AuthService } from 'src/app/services/auth.service';
 import * as firebase from 'firebase';
+import { ProprietairesService } from 'src/app/services/proprietaires.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-salles',
@@ -21,6 +22,9 @@ export class AddSallesComponent implements OnInit {
   signedUserEmail: string;
   signedUserNomPrenom: string;
   signedUserNumTel: string;
+
+  proprietaire:Proprietaire;
+  idP: number;
 
   imageParDefaut = 'https://firebasestorage.googleapis.com/v0/b/booksdao-dfe43.appspot.com/o/images%2F1599587492422sfrDElmh7i%20(3).png?alt=media&token=52e383b6-5aef-461c-841c-55b9b4935034';
   image1: string;
@@ -44,10 +48,13 @@ export class AddSallesComponent implements OnInit {
   file4Url:string;
   file4Uploaded = false;
 
+  proprios: Proprietaire[] = [];
+  proprioSuscriber: Subscription = new Subscription();
+
   constructor(private formBuilder: FormBuilder,
               private sallesService: SallesService,
               private router:Router,
-              private authService: AuthService
+              private proprioService: ProprietairesService
               ) { }
 
   ngOnInit(): void {
@@ -57,13 +64,19 @@ export class AddSallesComponent implements OnInit {
         if(user){
           //this.isAuth = true;
           this.signedUserEmail = user.email;
-          console.log(user);
         }else{
           //this.isAuth =false;
         }
-        //console.log("utilisateur courant "+ firebase.auth().currentUser.displayName);
       }
     )
+    this.proprioSuscriber = this.proprioService.propriosSubject.subscribe(
+      (proprios: Proprietaire[])=>{
+        this.proprios = proprios;
+        console.log(proprios);
+      }
+    );
+    this.proprioService.getProprios();
+    this.proprioService.emitProprios();
   }
 
   initForm(){
@@ -76,9 +89,9 @@ export class AddSallesComponent implements OnInit {
       nombrePlace: ['',Validators.required],
       prix: ['',Validators.required],
       type: ['',Validators.required],
-
     });
   }
+
 
   onSaveSalle(){
     const categorie = this.salleForm.get('categorie').value;
@@ -107,22 +120,20 @@ export class AddSallesComponent implements OnInit {
       }
 
     const image = new MesImages(this.image1,this.image2,this.image3,this.image4);
-
+    console.log(this.proprios);
     const lieu = this.salleForm.get('lieu').value;
     const nomSalle = this.salleForm.get('nomSalle').value;
     const nombrePlace = this.salleForm.get('nombrePlace').value;
     const prix = this.salleForm.get('prix').value;
-    
-
-
-    const proprio = new Proprietaire('Pas defini','Pas defini',this.signedUserEmail,'Pas defini','Pas defini');
+    console.log("Email a rechercher " + this.signedUserEmail);
+    this.proprietaire = this.proprioService.getUserDataByEmail(this.signedUserEmail);
+    console.log(this.proprietaire);
     const type = this.salleForm.get('type').value;
-    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,proprio,type);
+    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,this.proprietaire,type);
     console.log(newSalle);
     this.sallesService.createNewSalle(newSalle);
     this.router.navigate(['admin/lessalles']);
   }
-
   
 
   onUploadFile1(file:File){
@@ -173,4 +184,5 @@ export class AddSallesComponent implements OnInit {
   detectFiles4(event){
     this.onUploadFile4(event.target.files[0]);
   }
+
 }
