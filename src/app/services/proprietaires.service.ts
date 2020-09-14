@@ -18,7 +18,7 @@ export class ProprietairesService {
   }
 
   saveProprios(){
-    firebase.database().ref('/utilisateurs/').set(this.prorietaires);
+    firebase.database().ref('/utilisateurs').set(this.prorietaires);
   }
 
   updateProprio(id,proprioTOmodify:Proprietaire){
@@ -47,18 +47,7 @@ export class ProprietairesService {
       }
     )
   }
-/*
-  getUserDataByEmail(email){
-    return new Promise(
-      (resolve,reject)=>{
-        firebase.database().ref('/utilisateurs/')
-         .orderByKey().equalTo('0').on("child_added", (snap) => {
-          console.log(snap.val());
-      });
-      })
-    }*/
 
-    users = firebase.database().ref('/utilisateurs');
 
     getUserDataByEmail(email){
       let leproprioEl = new Proprietaire('','','','','');
@@ -83,7 +72,7 @@ export class ProprietairesService {
     this.prorietaires.push(newProprio);
     this.saveProprios();
     this.emitProprios();
-    return this.prorietaires.length-1;
+    //return this.prorietaires.length-1;
   }
 
   removeProrio(proprio: Proprietaire){
