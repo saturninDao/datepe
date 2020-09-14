@@ -66,7 +66,7 @@
                                 <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
                                     <thead>
                                         <tr>
-                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><span class="nobr">Numero</span></th>
+                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><span class="nobr">#</span></th>
                                             <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><span class="nobr">Photo</span></th>
                                             <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date"><span class="nobr">Nom & Prénon(s)</span></th>
                                             <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status"><span class="nobr">Contact</span></th>
@@ -79,10 +79,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order">
+                                        <tr *ngFor="let proprio of proprios; let i=index" class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order">
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
                                                 <a href="shop-account-order-single.html">
-                                                    #1719 </a>
+                                                    {{i}} </a>
 
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
@@ -91,16 +91,16 @@
 
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date" >
-                                            TEPE Amélé Raïssa
+                                            {{proprio.nomPrenom}}
                                             </td>
                                             <td>
-                                                93-76-67-63
+                                               {{proprio.numTel}}
                                             </td>
                                             <td>
-                                                Lomé-Agodékè
+                                                {{proprio.adresse}}
                                             </td>
                                             <td>
-                                                raissa.tepe@gmail.com
+                                                {{proprio.email}}
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
                                                 <a routerLink="../utilisateurs/info-utilisateurs"    class="fa fa-info"></a> 
@@ -110,40 +110,6 @@
                                             </td>
                                             <td>
                                                 <a routerLink="../utilisateurs/delete-utilisateurs" class="fa-trash"></a> 
-                                            </td>
-                                        </tr>
-
-                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order">
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
-                                                <a href="shop-account-order-single.html">
-                                                    #1720 </a>
-
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
-                                                <img src="../../../assets/images/events/01.jpg" alt="logo">
-                                                   
-
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date">
-                                            N'KPEDJI Afoua Kpami Florence
-                                            </td>
-                                            <td>
-                                                93-76-67-66
-                                            </td>
-                                            <td>
-                                                Agoè
-                                            </td>
-                                            <td>
-                                                afouapkamiflorence@gmail.com
-                                            </td>
-                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
-                                                <a routerLink="../utilisateurs/info-utilisateurs/view/1" class="fa fa-info"></a> 
-                                            </td>
-                                            <td>
-                                                <a href="#" class="fa fa-pencil"></a> 
-                                            </td>
-                                            <td>
-                                                <a href="#" class="fa-trash"></a> 
                                             </td>
                                         </tr>
 
