@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
     "firebase": "^7.14.5",
+    "jquery": "^3.5.1",
+    "ngx-owl-carousel": "^2.0.7",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.5.5",
     "tslib": "^2.0.0",

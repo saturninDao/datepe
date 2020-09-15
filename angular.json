@@ -29,9 +29,13 @@
               "src/assets/css/animations.css",
               "src/assets/css/font-awesome.css",
               "src/assets/css/main.css",
-              "src/assets/css/shop.css"
+              "src/assets/css/shop.css",
+              "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "./node_modules/owl.carousel/dist/assets/owl.theme.default.css"
             ],
             "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/owl.carousel/dist/owl.carousel.js",
               "src/assets/js/compressed.js",
               "src/assets/js/main.js",
               "src/assets/js/switcher.js"

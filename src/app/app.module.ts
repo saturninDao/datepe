@@ -40,6 +40,7 @@ import { EditUtilisateursComponent } from './admin/utilisateurs/edit-utilisateur
 import { InfoUtilisateursComponent } from './admin/utilisateurs/info-utilisateurs/info-utilisateurs.component';
 import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisateurs/delete-utilisateurs.component';
 import { TruncateTextPipe } from './truncate-textng.pipe';
+import { OwlModule } from 'ngx-owl-carousel';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OwlModule
   ],
   providers: [
     AuthGuardService,
