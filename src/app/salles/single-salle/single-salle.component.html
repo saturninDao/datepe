@@ -59,77 +59,78 @@
 				</div>
 
 				<div class="woocommerce-tabs wc-tabs-wrapper">
+					<!-- tabs start -->
+					<ul class="nav nav-tabs mt-40" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="tab01" data-toggle="tab" href="#tab01_pane" role="tab" aria-controls="tab01_pane" aria-expanded="true">Description</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tab02" data-toggle="tab" href="#tab02_pane" role="tab" aria-controls="tab02_pane">Informations</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tab03" data-toggle="tab" href="#tab03_pane" role="tab" aria-controls="tab03_pane">réservation</a>
+						</li>
 
-					<ul class="tabs wc-tabs" role="tablist">
-						<li class="description_tab" id="tab-title-description" role="tab"
-							aria-controls="tab-description">
-							<a href="#tab-description">Description</a>
-						</li>
-						<li class="additional_information_tab active" id="tab-title-additional_information" role="tab"
-							aria-controls="tab-additional_information">
-							<a href="#tab-additional_information">Informations </a>
-						</li>
-						<li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
-							<a href="#tab-reviews">Réserver </a>
-						</li>
 					</ul>
+					<div class="tab-content mb-40">
 
-					<div class="panel wc-tab" id="tab-description" role="tabpanel"
-						aria-labelledby="tab-title-description">
+						<div class="tab-pane fade show active" id="tab01_pane" role="tabpanel" aria-labelledby="tab01">
 
-						<h2>Description</h2>
+							<h4>Description</h4>
 
 						<p>{{salle.description}}</p>
-					</div>
-					<div class="panel wc-tab" id="tab-additional_information" role="tabpanel"
-						aria-labelledby="tab-title-additional_information">
+						</div>
+						<div class="tab-pane fade" id="tab02_pane" role="tabpanel" aria-labelledby="tab02">
+							<h4>Informations</h4>
 
-						<h2>Informations</h2>
+							<table class="shop_attributes">
+	
+								<tbody>
+									<tr>
+										<th>Lieu</th>
+										<td>
+											<p>{{salle.lieu}}</p>
+										</td>
+									</tr>
+									<tr>
+										<th>Prix</th>
+										<td>
+											<p>F CFA {{salle.prix}}</p>
+										</td>
+									</tr>
+									<tr>
+										<th>Type</th>
+										<td>
+											<p>{{salle.type}}</p>
+										</td>
+									</tr>
+									<tr>
+										<th>Nombre de place</th>
+										<td>
+											<p>{{salle.nombrePlace}}</p>
+										</td>
+									</tr>
+									<tr>
+										<th>Etat de la salle</th>
+										<td>
+											<p>{{salle.etatSalle}}</p>
+										</td>
+									</tr>
+									<tr>
+										<th>Catégorie</th>
+										<td>
+											<p>{{salle.categorie}}</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 
-						<table class="shop_attributes">
 
-							<tbody>
-								<tr>
-									<th>Lieu</th>
-									<td>
-										<p>{{salle.lieu}}</p>
-									</td>
-								</tr>
-								<tr>
-									<th>Prix</th>
-									<td>
-										<p>F CFA {{salle.prix}}</p>
-									</td>
-								</tr>
-								<tr>
-									<th>Type</th>
-									<td>
-										<p>{{salle.type}}</p>
-									</td>
-								</tr>
-								<tr>
-									<th>Nombre de place</th>
-									<td>
-										<p>{{salle.nombrePlace}}</p>
-									</td>
-								</tr>
-								<tr>
-									<th>Etat de la salle</th>
-									<td>
-										<p>{{salle.etatSalle}}</p>
-									</td>
-								</tr>
-								<tr>
-									<th>Catégorie</th>
-									<td>
-										<p>{{salle.categorie}}</p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="panel wc-tab" id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews">
-									<h2>Réserver la salle</h2>
+						</div>
+
+						<div class="tab-pane fade" id="tab03_pane" role="tabpanel" aria-labelledby="tab03">
+
+							<h4>Réserver la salle</h4>
 										<form action="http://webdesign-finder.com/" method="post" id="commentform"
 											class="comment-form" novalidate="">
 											<p class="comment-notes">
@@ -162,9 +163,11 @@
 
 											</p>
 										</form>
-									<!-- #respond -->
+
+						</div>
 
 					</div>
+					<!-- tabs end-->
 
 				</div>
 
