@@ -39,25 +39,21 @@
 
 				<div class="vertical-item content-padding box-shadow rounded overflow-hidden">
 					<div class="item-media">
-						<div class="owl-carousel" data-margin="0" data-responsive-lg="1" data-responsive-md="1"
-							data-responsive-sm="1" data-responsive-xs="1" data-nav="true">
-							<a href="{{salle.image.image1}}" class="photoswipe-link" data-width="1170"
-								data-height="780">
-								<img alt="img" [src]="salle.image.image1">
-							</a>
-							<a href="{{salle.image.image2}}" class="photoswipe-link" data-width="1170"
-								data-height="780">
-								<img alt="img" [src]="salle.image.image2">
-							</a>
-							<a href="{{salle.image.image3}}" class="photoswipe-link" data-width="1170"
-								data-height="780">
-								<img alt="img" [src]="salle.image.image3">
-							</a>
-							<a href="{{salle.image.image4}}" class="photoswipe-link" data-width="1170"
-								data-height="780">
-								<img alt="img" [src]="salle.image.image4">
-							</a>
-						</div>
+						<owl-carousel [options]="{items: 1, dots: true, nav: true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
+							<div class="item" *ngFor="let img of iimages">  
+	
+							<div   data-margin="0" data-responsive-lg="1" data-responsive-md="1"
+								data-responsive-sm="1" data-responsive-xs="1" data-nav="true">
+								<a href="{{img}}" class="photoswipe-link" data-width="1170"
+									data-height="780">
+									<img alt="img" src={{img}}>
+								</a>
+								
+						
+							</div>
+							</div>
+						</owl-carousel>
+						
 					</div>
 
 				</div>

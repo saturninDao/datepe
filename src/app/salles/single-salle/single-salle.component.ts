@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SallesService } from 'src/app/services/salles.service';
 import { MesImages } from '../../models/mesimages.model';
 import { Proprietaire } from 'src/app/models/proprietaire.model';
+import {OwlCarousel} from 'ngx-owl-carousel';
 
 @Component({
   selector: 'app-single-salle',
@@ -11,6 +12,12 @@ import { Proprietaire } from 'src/app/models/proprietaire.model';
   styleUrls: ['./single-salle.component.css']
 })
 export class SingleSalleComponent implements OnInit {
+  title = 'owl-carousel';
+
+  //Images = ['../assets/images/image1.jpg','../assets/images/image2.jpg','../assets/images/image1.jpg','../assets/images/image1.jpg'];
+ iimages:any[];
+mySlideOptions={items: 1, dots: true, nav: true};
+myCarouselOptions={items: 3, dots: true, nav: true};
 
   salle:Salle;
   lesimages:MesImages;
@@ -30,6 +37,8 @@ export class SingleSalleComponent implements OnInit {
      (salle:Salle)=>{
        this.salle = salle;
        console.log(salle);
+       this.iimages = [this.salle.image.image1,this.salle.image.image2,this.salle.image.image3,this.salle.image.image4];
+       console.log('image list'+this.iimages);
      }
    );
   }
