@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AppRoutingModule } from '../app/app-routing.module';
+import { OwlModule } from 'ngx-owl-carousel';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -101,7 +102,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OwlModule
   ],
   providers: [
     AuthGuardService,

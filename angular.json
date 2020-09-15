@@ -29,12 +29,17 @@
               "src/assets/css/animations.css",
               "src/assets/css/font-awesome.css",
               "src/assets/css/main.css",
-              "src/assets/css/shop.css"
+              "src/assets/css/shop.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
             ],
             "scripts": [
               "src/assets/js/compressed.js",
               "src/assets/js/main.js",
-              "src/assets/js/switcher.js"
+              "src/assets/js/switcher.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
             ]
           },
           "configurations": {
