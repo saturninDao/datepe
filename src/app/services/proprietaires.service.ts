@@ -48,10 +48,31 @@ export class ProprietairesService {
     )
   }
 
+
+    getUserDataByEmail(email){
+      let leproprioEl = new Proprietaire('','','','','');
+      console.log("hryyyyyyyyyyyyyyyyyyyyyyyyyy");
+      const proprioIndexToReturn = this.prorietaires.findIndex(
+        (proprioEl)=>{
+          console.log(proprioEl);
+          console.log(email);
+          if(proprioEl.email==email){
+            //return true;
+            leproprioEl = proprioEl;
+            
+          }
+        }
+      )
+      this.emitProprios();
+      return leproprioEl;
+
+    }
+
   createNewProprio(newProprio: Proprietaire) {
     this.prorietaires.push(newProprio);
     this.saveProprios();
     this.emitProprios();
+    //return this.prorietaires.length-1;
   }
 
   removeProrio(proprio: Proprietaire){

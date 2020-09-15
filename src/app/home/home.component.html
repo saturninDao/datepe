@@ -74,113 +74,38 @@
 					</ul>
 				</div> <!-- eof flexslider -->
 			</section>
-			<section class="s-pt-50 s-pb-50 s-pt-md-90 s-pb-md-90 s-pt-lg-50 s-pb-lg-120 s-pb-xl-100 s-pt-xl-80 ls">
-				<div class="container">
-					<div class="row">
-						<div class="divider-70 d-none d-lg-block"></div>
-						<div class="col-12">
-							<p class="feature-top text-center">Ce que nous vous proposons:</p>
-							<p class="feature-top text-center">
-								Remplissez vos périodes de demande  de devis, augmenter votre nombre de dates réservées, offrez vous une visibilité supplémentaire sur internet...</p>
-							<div class="owl-carousel features-carousel" data-margin="18" data-responsive-lg="3" data-responsive-md="2" data-responsive-sm="2" data-responsive-xs="1" data-dots="true" data-nav="true" data-loop="true">
-								<div class="features-item text-center">
-									<div class="features__content">
-										<h4 class="features__title color-main3"><a href="#">Promo vaccances</a></h4>
-										<p class="features__text">
-											-50% sur votre abonnement de 1 an + 3 mois offerts !!
-										</p>
-									</div>
-								</div>
-								<div class="features-item text-center">
-									<div class="features__content">
-										<h4 class="features__title  color-main2"><a href="#">Site</a></h4>
-										<p class="features__text">
-											www.datepe.tg
-										</p>
-									</div>
-								</div>
-								<div class="features-item text-center">
-									<div class="features__content">
-										<h4 class="features__title  color-main"><a href="#">Offres divers</a></h4>
-										<p class="features__text">
-											Obtenez jusqu'à 80% de réduction sur la location de vos salles
-										</p>
-									</div>
-								</div>
-								<div class="features-item">
-									<div class="features__content">
-										<h4 class="features__title color-main3"><a href="#">Promo vaccances</a></h4>
-										<p class="features__text">
-											-50% sur votre abonnement de 1 an + 3 mois offerts !!
-										</p>
-									</div>
-								</div>
-								<div class="features-item">
-									<div class="features__content">
-										<h4 class="features__title  color-main2"><a href="#">Site</a></h4>
-										<p class="features__text">
-											www.datepe.tg
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="divider-150 d-none d-xl-block"></div>
-						<div class="divider-0 d-none d-lg-block d-xl-none"></div>
-					</div>
-				</div>
-			</section>
+
 			<section class="events s-pt-60 s-pb-50 s-pt-md-100 s-pb-md-90 s-pt-lg-130 s-pb-lg-120 s-py-xl-70 overflow-visible ls ms">
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
 							<div class="events__title text-center special-heading">
-								<p>Nos salles</p>
-								<h2>RESERVATIONS</h2>
+								<p>Les salles les plus plébiscitées..</p>
+								<h2>SALLES</h2>
 							</div>
 							<div class="events">
-								<div class="events__item rounded light-bg">
+								<div *ngFor="let salle of salles;let i=index;" class="events__item rounded light-bg">
 									<div class="events__content">
 										<div class="events__date">
 											<div class="date__left color-main">
-												<span class="day">#jour</span>
+												<span class="day">#{{i+1}}</span>
 											</div>
 											<div class="date__right">
-												<span class="month">Date</span>
-												<span class="year">#recup disponibilité</span>
+												<span class="month">{{salle.nombrePlace}}</span>
+												<span class="year">places</span>
 											</div>
 										</div>
 										<div class="events__media">
-											<img src="../../assets/images/square/03.jpg" height="222" width="370" alt="img" />
+											<img [src]="salle.image.image1" height="222" width="370" alt="img" />
 										</div>
-										<h5 class="events__meta">Salle de soirées pour séminaires / d'entreprises </h5>
+										<h5 class="events__meta">{{salle.nomSalle | truncatetext:5}}</h5>
 										<div class="events__link">
-											<a href="#" class="btn btn-maincolor">Plus d'infos</a>
-										</div>
-									</div>
-								</div>
-								<div class="events__item rounded light-bg">
-									<div class="events__content">
-										<div class="events__date">
-											<div class="date__left color-main2">
-												<span class="day">#jour</span>
-											</div>
-											<div class="date__right">
-												<span class="month">Date</span>
-												<span class="year">#recup disponibilité</span>
-											</div>
-										</div>
-										<div class="events__media">
-											<img src="../../assets/images/square/05.jpg" height="222" width="370" alt="img" />
-										</div>
-										<h5 class="events__meta">Salle de réceptions</h5>
-										<div class="events__link">
-											<a href="#" class="btn btn-maincolor2">Plus d'infos</a>
+											<a (click)="onViewSalle(i)" class="btn btn-maincolor">Plus d'infos</a>
 										</div>
 									</div>
 								</div>
 							</div>
-							<a href="#" class="events__more text-center">Nos propositions</a>
+							<a routerLink="/salles" class="events__more text-center">Toutes les salles</a>
 						</div>
 					</div>
 				</div>

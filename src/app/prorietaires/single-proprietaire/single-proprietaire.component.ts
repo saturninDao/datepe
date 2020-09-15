@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Proprietaire } from 'src/app/models/proprietaire.model';
+import { ProprietairesService } from 'src/app/services/proprietaires.service';
+import { SallesService } from 'src/app/services/salles.service';
 
 @Component({
   selector: 'app-single-proprietaire',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleProprietaireComponent implements OnInit {
 
-  constructor() { }
+  proprio:Proprietaire;
+  constructor(private route:ActivatedRoute,
+              private router:Router,
+              private proprioService:ProprietairesService) { }
 
   ngOnInit(): void {
+   // We create empty book wating for the promise of service to avoid errors
+   this.proprio = new Proprietaire('','','','','');
+   //We get the id of the book we are about to look at
+   const id = this.route.snapshot.params['id'];
+   this.proprioService.getSingle(+id).then(
+     (proprio:Proprietaire)=>{
+       this.proprio = proprio;
+       console.log(proprio);
+     }
+   );
+  }
+
+  onBack(){
+    this.router.navigate(['salles']);
   }
 
 }

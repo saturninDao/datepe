@@ -32,6 +32,15 @@ export class SallesService {
       })
   }
 
+  getSallesForHomePage(){
+    firebase.database().ref('/salles')
+      .limitToFirst(3)
+      .on('value',(data)=>{
+        this.salles = data.val()?data.val():[];
+        this.emitSalles();
+      })
+  }
+
   getSingle(id){
     return new Promise(
       (resolve,reject)=>{

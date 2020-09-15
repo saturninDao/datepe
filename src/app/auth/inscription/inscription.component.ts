@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Proprietaire } from 'src/app/models/proprietaire.model';
 import { ProprietairesService } from 'src/app/services/proprietaires.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inscription',
@@ -15,6 +16,8 @@ export class InscriptionComponent implements OnInit {
 
   signUpForm: FormGroup;
   errorMessage: string;
+  proprioSuscriber: Subscription = new Subscription();
+  proprios: Proprietaire[];
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private proprioService: ProprietairesService,
@@ -23,6 +26,14 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     console.log(firebase.auth.Auth);
+    this.proprioSuscriber = this.proprioService.propriosSubject.subscribe(
+      (proprios: Proprietaire[])=>{
+        this.proprios = proprios;
+        console.log(proprios);
+      }
+    );
+    this.proprioService.getProprios();
+    this.proprioService.emitProprios();
   }
 
   initForm(){
@@ -45,15 +56,16 @@ export class InscriptionComponent implements OnInit {
     const adresse = this.signUpForm.get('adresse').value;
     const nomPrenom = prenom+' '+nom;
 
-    const newProprietaire = new Proprietaire(adresse,'',email,nomPrenom,numTel);
-
     
 
     this.authService.createNewUser(email,password).then(
       ()=> {
+
+        const newProprietaire = new Proprietaire(adresse,'',email,nomPrenom,numTel);
+        console.log(newProprietaire);
         this.proprioService.createNewProprio(newProprietaire);
-       this.router.navigate(['/accueil']);
-       console.log(newProprietaire);
+        this.router.navigate(['/accueil']);
+       //console.log(retourKey);
       },
       (error)=> {
         this.errorMessage = error;
