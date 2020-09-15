@@ -25,13 +25,13 @@
 <section class="ls s-pt-xl-90 s-pb-xl-90 s-pt-lg-60 s-pb-lg-80 s-pt-md-100 s-pb-md-130 s-pt-60 s-pb-110 c-mb-30">
     <div class="d-none d-lg-block divider-70"></div>
     <div class="container">
-        <div class="row" *ngFor="let proprio of proprios">
+        <div class="row" *ngFor="let proprio of proprios; let i=index">
             <div class="col-12">
                 <div class="side-item box-shadow content-padding">
                     <div class="item-media">
-                        <img alt="img" src="../../assets/images/team/team1.jpg">
+                        <img alt="img" src="../../assets/images/team/0{{i+1}}.jpg">
                         <div class="media-links">
-                            <a class="abs-link" title="" routerLink="view/1"></a>
+                            <a class="abs-link" title="" routerLink="view/{{i}}"></a>
                         </div>
                     </div>
                     <div class="item-content">

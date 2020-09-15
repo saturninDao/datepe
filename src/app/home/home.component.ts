@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Proprietaire } from '../models/proprietaire.model';
 import { Salle } from '../models/salle.model';
+import { ProprietairesService } from '../services/proprietaires.service';
 import { SallesService } from '../services/salles.service';
 declare var $: any;
 
@@ -13,8 +15,14 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 
   sallesSuscriber:Subscription=new Subscription();
+  proprioSuscriber:Subscription=new Subscription();
   salles: Salle[];
-  constructor(private sallesService: SallesService,private router:Router) { }
+  proprios: Proprietaire[];
+  constructor(
+    private sallesService: SallesService,
+    private router:Router,
+    private propriosService: ProprietairesService
+    ) { }
 
   ngOnInit(): void {
     this.sallesSuscriber = this.sallesService.sallesSubject.subscribe(
@@ -25,6 +33,14 @@ export class HomeComponent implements OnInit {
     );
     this.sallesService.getSallesForHomePage();
     this.sallesService.emitSalles();
+    this.proprioSuscriber = this.propriosService.propriosSubject.subscribe(
+      (proprios:Proprietaire[])=>{
+        this.proprios = proprios;
+        console.log(proprios);
+      }
+    );
+    this.propriosService.getProprios();
+    this.propriosService.emitProprios();
   }
 
   carouselOptions = {
@@ -42,14 +58,14 @@ export class HomeComponent implements OnInit {
         nav: true
       },
       1000: {
-        items: 2,
+        items: 1,
         nav: true,
         loop: false
       },
       1500: {
-        items: 3,
+        items: 1,
         nav: true,
-        loop: false
+        loop: true
       }
     }
   }

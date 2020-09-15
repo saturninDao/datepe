@@ -75,12 +75,12 @@
 				</div> <!-- eof flexslider -->
 			</section>
 
-			<section class="events s-pt-60 s-pb-50 s-pt-md-100 s-pb-md-90 s-pt-lg-130 s-pb-lg-120 s-py-xl-70 overflow-visible ls ms">
+			<section class="s-pt-50 s-pb-50 s-pt-md-90 s-pb-md-90 s-pt-lg-50 s-pb-lg-120 s-pb-xl-100 s-pt-xl-80 ls ms">
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
 							<div class="events__title text-center special-heading">
-								<p>Les salles les plus plébiscitées..</p>
+								<p>Les plus plébiscitées..</p>
 								<h2>SALLES</h2>
 							</div>
 							<div class="events">
@@ -121,70 +121,33 @@
 					<div class="row">
 
 						<div class="col-md-12">
+							<div class="events__title text-center special-heading">
+								<p>Rejoignez les meilleurs..</p>
+								<h2>PROPRIETAIRES</h2>
+							</div>
 
-							<div class="testimonials-slider owl-carousel" data-autoplay="false" data-loop="true" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-nav="false" data-dots="true">
-								<div class="quote-item">
+							<!-- <div class="testimonials-slider owl-carousel" data-autoplay="false" data-loop="true" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-nav="false" data-dots="true"> -->
+								<owl-carousel [options]="carouselOptions" [items]="proprios" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+								<div *ngFor="let proprio of proprios; let i=index" class="quote-item">
 									<div class="quote-image">
-										<img src="../../assets/images/square/01.jpg" alt="img">
+										<img src="../../assets/images/team/0{{i+1}}.jpg" alt="img">
 									</div>
 									<blockquote>
 										<footer>
-											Salle de fête
+											<a routerLink="/proprietaires/view/{{i}}">{{proprio.nomPrenom}}</a>
 											<div class="star-rating">
 												<span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span>
 											</div>
 										</footer>
 
 										<p>
-											Avec <strong>daTépé</strong> 
-											Remplissez vos périodes de demande  de devis, augmenter votre nombre de dates réservées,
-											offrez vous une visibilité supplémentaire sur internet  
+												{{proprio.description|truncatetext:50}}
 										</p>
 
 									</blockquote>
 								</div>
-
-
-								<div class="quote-item">
-									<div class="quote-image">
-										<img src="../../assets/images/square/02.jpg" alt="img">
-									</div>
-									<blockquote>
-										<footer>
-											STEVEN BAUER
-											<div class="star-rating">
-												<span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span>
-											</div>
-										</footer>
-
-										<p>
-											Right after moving in <strong>QWorx</strong> became a huge resource for us in our growth efforts. We found that the type of companies here were all in growth mode which creates a really fun energy and a place.
-										</p>
-
-									</blockquote>
-								</div>
-
-
-								<div class="quote-item">
-									<div class="quote-image">
-										<img src="../../assets/images/square/04.jpg" alt="img">
-									</div>
-									<blockquote>
-										<footer>
-											STEVEN BAUER
-											<div class="star-rating text-center">
-												<span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span>
-											</div>
-										</footer>
-
-										<p>
-											Right after moving in <strong>QWorx</strong> became a huge resource for us in our growth efforts. We found that the type of companies here were all in growth mode which creates a really fun energy and a place.
-										</p>
-
-									</blockquote>
-								</div>
-
-							</div><!-- .testimonials-slider -->
+								</owl-carousel>
+							<!-- </div>.testimonials-slider -->
 
 						</div>
 						<div class="divider-150 d-none d-xl-block"></div>
