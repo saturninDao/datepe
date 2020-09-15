@@ -39,6 +39,7 @@ import { from } from 'rxjs';
 import { EditUtilisateursComponent } from './admin/utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
 import { InfoUtilisateursComponent } from './admin/utilisateurs/info-utilisateurs/info-utilisateurs.component';
 import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisateurs/delete-utilisateurs.component';
+import { TruncateTextPipe } from './truncate-textng.pipe';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
   { path: 'admin/lessalles', canActivate:[AuthGuardService], component: LesSallesComponent },
   { path: 'admin/utilisateurs', canActivate:[AuthGuardService], component: UtilisateursComponent},  
   { path: 'admin/utilisateurs/info-utilisateurs', canActivate:[AuthGuardService], component: InfoUtilisateursComponent},
-  { path: 'admin/utilisateurs/edit-utilisateurs', canActivate:[AuthGuardService], component: EditUtilisateursComponent},
+  { path: 'admin/utilisateurs/edit-utilisateurs/:id', canActivate:[AuthGuardService], component: EditUtilisateursComponent},
   { path: 'admin/utilisateurs/delete-utilisateurs', canActivate:[AuthGuardService], component: DeleteUtilisateursComponent},
   { path: 'admin/compte', canActivate:[AuthGuardService], component: CompteComponent},
   { path: 'admin/lessalles/add-salles', canActivate:[AuthGuardService], component: AddSallesComponent},
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     EditUtilisateursComponent,
     InfoUtilisateursComponent,
     DeleteUtilisateursComponent,
+    TruncateTextPipe
   ],
   imports: [
     BrowserModule,
