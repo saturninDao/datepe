@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
 
   errorMessage: string;
   isMessageEnvoye: boolean;
+  isEncoursDEnvoie: boolean;
   contactForm: FormGroup;
 
   constructor(
@@ -63,13 +64,16 @@ export class ContactComponent implements OnInit {
      sujet = JSON.stringify(sujet);
      messageToSend = JSON.stringify(messageToSend);
 
+    this.isEncoursDEnvoie=true;
     return this.http.get('https://us-central1-projetdatepe.cloudfunctions.net/sendMail?dest='+dest+'&sujet='+sujet+'&message='+messageToSend+'',httpOptions)
+
                     .toPromise()
                     .then( res => {
                       console.log(res);
                       console.log("Message envoyé!");
                       this.contactForm.reset();
                       this.isMessageEnvoye=true;
+                      this.isEncoursDEnvoie=false;
                     })
                     .catch(err => {
                       console.log(err)
