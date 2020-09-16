@@ -41,6 +41,8 @@ import { InfoUtilisateursComponent } from './admin/utilisateurs/info-utilisateur
 import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisateurs/delete-utilisateurs.component';
 import { TruncateTextPipe } from './truncate-textng.pipe';
 import { OwlModule } from 'ngx-owl-carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -105,7 +107,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    OwlModule
+    OwlModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [
     AuthGuardService,
