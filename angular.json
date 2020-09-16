@@ -42,8 +42,7 @@
               "src/assets/js/compressed.js",
               "src/assets/js/main.js",
               "src/assets/js/switcher.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {

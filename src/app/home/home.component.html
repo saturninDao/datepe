@@ -47,7 +47,7 @@
 									</div> <!-- eof .col-* -->
 								</div><!-- eof .row -->
 							</div><!-- eof .container-fluid -->
-
+						</li>
 						<li class="cs text-center">
 							<img alt="img" src="../../assets/images/slide-bg3.jpg">
 							<div class="container">
@@ -161,35 +161,19 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<div class="owl-carousel small-gallery-carousel" data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="2" data-responsive-xs="1" data-nav="true" data-loop="false">
-								<a href="../../assets/images/square/04.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/04.jpg" alt="img">
+							<owl-carousel [options]="{items: 5, dots: false, nav: true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
+								<div class="item" *ngFor="let img of iimages">  
+		
+							<div  data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="2" data-responsive-xs="1"  data-loop="false">
+								
+								<a href="{{img}}" class="photoswipe-link" data-width="800" 
+								data-height="800">
+								<img alt="img" src={{img}}>
 								</a>
-								<a href="../../assets/images/square/05.jpg" class="photoswipe-link" data-width="800" data-height="800" data-iframe="https://www.youtube.com/embed/mcixldqDIEQ">
-									<img src="../../assets/images/square/05.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/06.jpg" class="photoswipe-link" data-width="800" data-height="800" data-iframe="//player.vimeo.com/video/1084537">
-									<img src="../../assets/images/square/06.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/07.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/07.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/08.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/08.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/09.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/09.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/10.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/10.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/11.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/11.jpg" alt="img">
-								</a>
-								<a href="../../assets/images/square/01.jpg" class="photoswipe-link" data-width="800" data-height="800">
-									<img src="../../assets/images/square/01.jpg" alt="img">
-								</a>
+								
 							</div>
+								</div>
+							</owl-carousel>
 						</div>
 					</div>
 				</div>
