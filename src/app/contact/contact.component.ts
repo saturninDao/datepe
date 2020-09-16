@@ -62,7 +62,7 @@ export class ContactComponent implements OnInit {
     
      dest = JSON.stringify(dest);
      sujet = JSON.stringify(sujet);
-     messageToSend = JSON.stringify(messageToSend);
+    // messageToSend = JSON.stringify(messageToSend);
 
     this.isEncoursDEnvoie=true;
     return this.http.get('https://us-central1-projetdatepe.cloudfunctions.net/sendMail?dest='+dest+'&sujet='+sujet+'&message='+messageToSend+'',httpOptions)

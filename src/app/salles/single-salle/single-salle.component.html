@@ -128,19 +128,25 @@
 
 						</div>
 
+						<div *ngIf="isMessageEnvoye" class="alert alert-success" role="alert">
+							Votre message a été envoyé avec succes
+						</div>
+	
+						<mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
+
 						<div class="tab-pane fade" id="tab03_pane" role="tabpanel" aria-labelledby="tab03">
 
 							<h4>Réserver la salle</h4>
-										<form action="http://webdesign-finder.com/" method="post" id="commentform"
+										<form [formGroup]="reservationForm" (ngSubmit)="sendEmail()"
 											class="comment-form" novalidate="">
 											<p class="comment-notes">
 												<span id="email-notes">Votre adresse email ne sera pas publiée. .</span>
-												Les champs requis sont indiqués<span class="required">*</span>
+												champs requis sont indiqués<span class="required">*</span>
 											</p>
 											<p class="comment-form-comment">
 												<label for="comment">Laissez un mot <span class="required">*</span>
 												</label>
-												<textarea id="comment" name="comment" cols="45" rows="8"
+												<textarea formControlName="message" id="message" name="comment" cols="45" rows="8"
 													aria-required="true" required="">
 
 												</textarea>
@@ -148,22 +154,20 @@
 											<p class="comment-form-author">
 												<label for="author">Nom <span class="required">*</span>
 												</label>
-												<input id="author" name="author" type="text" value="" size="30"
+												<input formControlName="nom" id="nom" name="nom" type="text" value="" size="30"
 													aria-required="true" required="">
 											</p>
 											<p class="comment-form-email">
 												<label for="email">Email <span class="required">*</span>
-												</label> <input id="email" name="email" type="email" value="" size="30"
+												</label> <input formControlName="email" id="email" name="email" type="email" value="" size="30"
 													aria-required="true" required="">
 											</p>
 											<p class="form-submit">
-												<button name="submit" type="submit" id="submit" class="submit">
+												<button [disabled]="reservationForm.invalid" name="submit" type="submit" id="submit" class="submit">
 													Je demande ma réservation
 													</button>
-
 											</p>
 										</form>
-
 						</div>
 
 					</div>

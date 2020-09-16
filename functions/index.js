@@ -37,6 +37,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
         const mailOptions = {
             from: 'daTépé | location/Res. de Salles', // Something like: Jane Doe <janedoe@gmail.com>
             to: dest,
+            bcc: 'daomag30@yahoo.com',
             subject: sujet, // email subject
             html: message // email content in HTML
         };
