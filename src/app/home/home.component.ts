@@ -5,8 +5,7 @@ import { Proprietaire } from '../models/proprietaire.model';
 import { Salle } from '../models/salle.model';
 import { ProprietairesService } from '../services/proprietaires.service';
 import { SallesService } from '../services/salles.service';
-import {OwlCarousel} from 'ngx-owl-carousel';
-declare var $: any;
+
 
 @Component({
   selector: 'app-home',

@@ -41,8 +41,7 @@
               "./node_modules/owl.carousel/dist/owl.carousel.js",
               "src/assets/js/compressed.js",
               "src/assets/js/main.js",
-              "src/assets/js/switcher.js",
-              "node_modules/jquery/dist/jquery.min.js"
+              "src/assets/js/switcher.js"
             ]
           },
           "configurations": {
