@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
-const admin=require('firebase-admin');
-const nodemailer =required('nodemailer');
+const admin = require('firebase-admin');
+const nodemailer = required('nodemailer');
 
 admin.initializeApp()
 require('dotenv').config()
@@ -23,7 +23,7 @@ exports.sendEmailNotification=functions.firestore.document('submissions/{docId}'
     });
 
     authData.sendMail({
-        from :'info.truly@makethatap.com',
+        from :'raissa.tepe@gmail.com',
         to:`${data.email}`,
         subject:'Your are submission info to datepe',
         text:`${data.email}`,
