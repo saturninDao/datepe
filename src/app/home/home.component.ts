@@ -5,6 +5,7 @@ import { Proprietaire } from '../models/proprietaire.model';
 import { Salle } from '../models/salle.model';
 import { ProprietairesService } from '../services/proprietaires.service';
 import { SallesService } from '../services/salles.service';
+import {OwlCarousel} from 'ngx-owl-carousel';
 declare var $: any;
 
 @Component({
@@ -13,6 +14,11 @@ declare var $: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  title = 'owl-carousel';
+
+  iimages = ['../../assets/images/square/04.jpg','../../assets/images/square/05.jpg','../../assets/images/square/06.jpg','../../assets/images/square/07.jpg','../../assets/images/square/08.jpg','../../assets/images/square/09.jpg','../../assets/images/square/10.jpg','../../assets/images/square/11.jpg','../../assets/images/square/01.jpg'];
+  mySlideOptions={items: 1, dots: true, nav: true};
+  myCarouselOptions={items: 3, dots: true, nav: true};
 
   sallesSuscriber:Subscription=new Subscription();
   proprioSuscriber:Subscription=new Subscription();
