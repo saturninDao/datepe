@@ -43,7 +43,7 @@
                         <li class="product" routerLinkActive="active" *ngFor="let salle of salles; let i=index" (click)="onViewSalle(i)">
                             <a (click)="onViewSalle(i)" style="cursor: pointer;">
 
-                                <img alt="img" [src]="salle.image.image1" [lazyLoad]="salle.image.image1">
+                                <img [defaultImage]="defaultLazyImage" alt="img" [src]="salle.image.image1" [lazyLoad]="salle.image.image1">
 
                                 <h2>{{salle.nomSalle}}</h2>
                                 <div class="star-rating">

@@ -47,8 +47,6 @@
 									data-height="780">
 									<img alt="img" src={{img}} [lazyLoad]="img" >
 								</a>
-								
-						
 							</div>
 							</div>
 						</owl-carousel>
@@ -188,7 +186,7 @@
 					<ul class="list-unstyled">
 						<li class="media box-shadow rounded">
 							<a class="media-image">
-								<img alt="img" [src]="salle.image.image1">
+								<img [defaultImage]="defaultLazyImage"  alt="img" [src]="salle.image.image1" [lazyLoad]="salle.image.image1">
 							</a>
 							<div class="media-body">
 								<h4>

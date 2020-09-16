@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   iimages = ['../../assets/images/square/04.jpg','../../assets/images/square/05.jpg','../../assets/images/square/06.jpg','../../assets/images/square/07.jpg','../../assets/images/square/08.jpg','../../assets/images/square/09.jpg','../../assets/images/square/10.jpg','../../assets/images/square/11.jpg','../../assets/images/square/05.jpg'];
  
 
+  defaultLazyImage = '../../assets/images/chargement.gif';
+
   sallesSuscriber:Subscription=new Subscription();
   proprioSuscriber:Subscription=new Subscription();
   salles: Salle[];

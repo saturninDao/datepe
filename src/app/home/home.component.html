@@ -96,7 +96,7 @@
 											</div>
 										</div>
 										<div class="events__media">
-											<img [src]="salle.image.image1" height="222" width="370" alt="img" />
+											<img [src]="salle.image.image1" [defaultImage]="defaultLazyImage" [lazyLoad]="salle.image.image1" height="222" width="370" alt="img" />
 										</div>
 										<h5 class="events__meta">{{salle.nomSalle | truncatetext:5}}</h5>
 										<div class="events__link">
@@ -168,7 +168,7 @@
 								
 								<a href="{{img}}" class="photoswipe-link" data-width="800" 
 								data-height="800">
-								<img alt="img" src={{img}}  [lazyLoad]="img">
+								<img [defaultImage]="defaultLazyImage" alt="img" src={{img}}  [lazyLoad]="img">
 								</a>
 								
 							</div>

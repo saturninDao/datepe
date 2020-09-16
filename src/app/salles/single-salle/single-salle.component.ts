@@ -17,6 +17,7 @@ export class SingleSalleComponent implements OnInit {
   title = 'owl-carousel';
 
   //Images = ['../assets/images/image1.jpg','../assets/images/image2.jpg','../assets/images/image1.jpg','../assets/images/image1.jpg'];
+  defaultLazyImage = '../../assets/images/chargement.gif';
   iimages:any[];
   mySlideOptions={items: 1, dots: true, nav: true};
   myCarouselOptions={items: 3, dots: true, nav: true};

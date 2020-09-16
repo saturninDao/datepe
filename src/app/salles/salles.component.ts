@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class SallesComponent implements OnInit,OnDestroy {
   salles: Salle[] = [];
   salleSubscriber: Subscription = new Subscription();
+  defaultLazyImage = '../../assets/images/chargement.gif';
+
   constructor(private sallesService: SallesService, private router: Router) { }
 
   ngOnInit(): void {
