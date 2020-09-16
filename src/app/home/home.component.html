@@ -130,7 +130,7 @@
 								<owl-carousel [options]="carouselOptions" [items]="proprios" [carouselClasses]="['owl-theme', 'row', 'sliding']">
 								<div *ngFor="let proprio of proprios; let i=index" class="quote-item">
 									<div class="quote-image">
-										<img src="../../assets/images/team/0{{i+1}}.jpg" alt="img">
+										<img src="../../assets/images/team/0{{i+1}}.jpg" alt="img" >
 									</div>
 									<blockquote>
 										<footer>
@@ -161,14 +161,14 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<owl-carousel [options]="{items: 5, dots: false}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
+							<owl-carousel [options]="{items: 5, dots: false,nav:true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
 								<div class="item" *ngFor="let img of iimages; let i=index">  
 		
 							<div  data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="2" data-responsive-xs="1"  data-loop="false">
 								
 								<a href="{{img}}" class="photoswipe-link" data-width="800" 
 								data-height="800">
-								<img alt="img" src={{img}}>
+								<img alt="img" src={{img}}  [lazyLoad]="img">
 								</a>
 								
 							</div>

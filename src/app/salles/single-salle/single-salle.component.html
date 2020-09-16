@@ -41,12 +41,11 @@
 					<div class="item-media">
 						<owl-carousel [options]="{items: 1, dots: true, nav: true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
 							<div class="item" *ngFor="let img of iimages">  
-	
 							<div   data-margin="0" data-responsive-lg="1" data-responsive-md="1"
 								data-responsive-sm="1" data-responsive-xs="1" data-nav="true">
 								<a href="{{img}}" class="photoswipe-link" data-width="1170"
 									data-height="780">
-									<img alt="img" src={{img}}>
+									<img alt="img" src={{img}} [lazyLoad]="img" >
 								</a>
 								
 						
