@@ -46,7 +46,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
             if(erro){
                 return res.send(erro.toString());
             }
-            return res.send('Sended '+dest+' '+sujet+' '+message);
+            return res.send(JSON.stringify('Sended '+dest+' '+sujet+' '+message));
         });
     });    
 });
