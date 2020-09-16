@@ -72,46 +72,47 @@
                                 <p>
                                             {{proprio.description}}
                                 </p>
-
-                                <span class="small-text">Adresse</span>
+                                
                                 <div class="progress">
-                                    <div class="progress-bar bg-maincolor" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
-                                        <span>{{proprio.adresse}}</span>
-                                    </div>
+                                    <div class="progress-bar bg-maincolor" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
 
-                                <span class="small-text">Email</span>
-                                <div class="progress">
-                                    <div class="progress-bar bg-maincolor2" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
-                                        <span>{{proprio.email}}</span>
-                                    </div>
-                                </div>
+                                <span class="small-text">Adresse : </span>  <span ><strong>{{proprio.adresse}}</strong></span>
+                                <div class="progress"></div>
 
-                                <span class="small-text">Téléphone</span>
+                                <span class="small-text">Email : </span>    <span><strong>{{proprio.email}}</strong></span>
+                                <div class="progress"></div>
+
+                                <span class="small-text">Téléphone : </span>    <span><strong>{{proprio.numTel}}</strong></span>
+                                <div class="progress"></div>
+
                                 <div class="progress">
-                                    <div class="progress-bar bg-maincolor3" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100">
-                                        <span>{{proprio.numTel}}</span>
-                                    </div>
+                                    <div class="progress-bar bg-maincolor3" role="progressbar" data-transitiongoal="100" aria-valuemin="0" aria-valuemax="100"> </div>
                                 </div>
 
                             </div>
 
                             <div class="tab-pane fade" id="tab03_pane" role="tabpanel" aria-labelledby="tab03">
+                                <div *ngIf="isMessageEnvoye" class="alert alert-success" role="alert">
+                                    Votre message a été envoyé avec succes
+                                </div>
 
-                                <form class="contact-form" method="post">
+                                <form [formGroup]="contactProprioForm" (ngSubmit)="sendEmail()"
+											class="comment-form" novalidate="">
                                     <p class="contact-form-name">
 
-                                        <input type="text" aria-required="true" size="30" value="" name="name" class="form-control" placeholder="Nom">
+                                        <input formControlName="name" type="text" aria-required="true" size="30" value="" name="name"  id="name" class="form-control" placeholder="Nom" required="">
                                     </p>
                                     <p class="contact-form-email">
 
-                                        <input type="email" aria-required="true" size="30" value="" name="email" class="form-control" placeholder="Email">
+                                        <input formControlName="email" type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="Email" required="">
                                     </p>
                                     <p class="contact-form-message">
-                                        <textarea aria-required="true" rows="8" cols="45" name="message" class="form-control" placeholder="Message"></textarea>
+                                        <textarea formControlName="message" aria-required="true" rows="8" cols="45" name="message" id="message" class="form-control" placeholder="Message" required=""></textarea>
                                     </p>
-                                    <p class="contact-form-submit">
-                                        <button type="submit" name="contact_submit" class="btn btn-maincolor">Envoyer
+                                    <mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
+                                    <p class="form-submit">
+                                        <button  [disabled]="contactProprioForm.invalid" type="submit" id="submit" name="submit" class="submit">Envoyer
                                         </button>
                                     </p>
                                 </form>

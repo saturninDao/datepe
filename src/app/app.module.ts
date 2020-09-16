@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AppRoutingModule } from '../app/app-routing.module';
+import { LazyLoadImageModule } from 'ng-lazyload-image'; 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -109,7 +110,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     OwlModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    LazyLoadImageModule
   ],
   providers: [
     AuthGuardService,

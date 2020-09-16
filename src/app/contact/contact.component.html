@@ -38,7 +38,7 @@
                         Votre message a été envoyé avec succes
                     </div>
 
-                    <mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
+                    
 
                     <form [formGroup]="contactForm" (ngSubmit)="sendEmail()" class="contact-form c-mb-15 c-gutter-15">
 
@@ -94,9 +94,11 @@
                             </div>
 
                         </div>
-
+                        <div style="margin-bottom: 15px;">
+                            <mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
+                        </div>
                         <div class="row">
-
+                            
                             <div class="col-sm-12">
 
                                 <div class="form-group has-placeholder">
