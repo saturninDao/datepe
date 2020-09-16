@@ -161,8 +161,8 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<owl-carousel [options]="{items: 5, dots: false}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
-								<div class="item" *ngFor="let img of iimages; let i=index">  
+							<owl-carousel [options]="{items: 5, dots: false, nav:true}" [carouselClasses]="['owl-theme', 'row','sliding']">  
+								<div *ngFor="let img of iimages; let i=index" class="item" >  
 		
 							<div  data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="2" data-responsive-xs="1"  data-loop="false">
 								
