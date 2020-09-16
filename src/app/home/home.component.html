@@ -161,12 +161,12 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<owl-carousel [options]="{items: 5, dots: true, nav: true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
+							<owl-carousel [options]="{items: 5, dots: false, nav: true}" [items]="iimages" [carouselClasses]="['owl-theme', 'sliding']" >  
 								<div class="item" *ngFor="let img of iimages">  
 		
-							<div class="small-gallery-carousel" data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="1" data-responsive-xs="1" data-nav="true" data-loop="false">
+							<div  data-margin="0" data-responsive-lg="8" data-responsive-md="4" data-responsive-sm="2" data-responsive-xs="1"  data-loop="false">
 								
-								<a href="{{img}}" class="photoswipe-link" data-width="800"
+								<a href="{{img}}" class="photoswipe-link" data-width="800" 
 								data-height="800">
 								<img alt="img" src={{img}}>
 								</a>
