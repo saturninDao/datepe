@@ -13,6 +13,7 @@ export class LesSallesComponent implements OnInit {
 
   salles: Salle[] = [];
   salleSubscriber: Subscription = new Subscription();
+  defaultLazyImage = '../../assets/images/chargement.gif';
   constructor(private sallesService: SallesService, private router: Router) { }
 
   ngOnInit(): void {
