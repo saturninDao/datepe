@@ -43,7 +43,7 @@ export class ContactComponent implements OnInit {
     const nom = this.contactForm.get('nom').value;
     const tel = this.contactForm.get('tel').value;
     const email = this.contactForm.get('email').value;
-    const sujet = this.contactForm.get('sujet').value;
+    let sujet = this.contactForm.get('sujet').value;
     const message = this.contactForm.get('message').value;
 
     params.set('dest', 'tda92212@gmail.com');
@@ -59,7 +59,9 @@ export class ContactComponent implements OnInit {
 
     let messageToSend = '<body><table><tr><td>Nom:</td><td>'+nom+'</td></tr><tr><td>Telephone:</td><td>'+tel+'</td></tr><tr><td>Email:</td><td>'+email+'</td></tr><tr><td>Message:</td><td>'+message+'</td></tr></table></body>'
     
-
+     dest = JSON.stringify(dest);
+     sujet = JSON.stringify(sujet);
+     messageToSend = JSON.stringify(messageToSend);
 
     return this.http.get('https://us-central1-projetdatepe.cloudfunctions.net/sendMail?dest='+dest+'&sujet='+sujet+'&message='+messageToSend+'',httpOptions)
                     .toPromise()
@@ -71,9 +73,9 @@ export class ContactComponent implements OnInit {
                     })
                     .catch(err => {
                       console.log(err)
-                      console.log("Message envoyé!");
-                      this.isMessageEnvoye=true;
-                      this.contactForm.reset();
+                      console.log("Message pas envoyé ou envoyé avec des erreurs!");
+                      //this.isMessageEnvoye=true;
+                      //this.contactForm.reset();
                     })
   }
 
