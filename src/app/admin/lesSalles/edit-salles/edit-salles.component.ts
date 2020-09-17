@@ -14,8 +14,9 @@ import { SallesService } from 'src/app/services/salles.service';
 export class EditSallesComponent implements OnInit {
 
   // les attributs pour afficher la salle a modifier
-  salle:Salle;
+  salle:any;
   lesimages:MesImages;
+  iimages:any;
   leProprietaire:Proprietaire;
 
   // les attributs pour gerer la modification
@@ -39,6 +40,8 @@ export class EditSallesComponent implements OnInit {
   file4Uploaded = false;
 
 
+  key:any;
+
   constructor(private route:ActivatedRoute,
               private router:Router,
               private formBuilder: FormBuilder,
@@ -50,14 +53,15 @@ export class EditSallesComponent implements OnInit {
    this.lesimages = new MesImages('','','','');
    this.leProprietaire = new Proprietaire('','','','','');
    this.salle = new Salle('','','',this.lesimages,'','',0,0,this.leProprietaire,'');
-   //We get the id of the book we are about to look at
-   const id = this.route.snapshot.params['id'];
-   this.sallesService.getSingle(+id).then(
-     (salle:Salle)=>{
-       this.salle = salle;
-       console.log(salle);
+   const key = this.route.snapshot.params['id'];
+   this.key = key;
+   this.salle = this.sallesService.getOneSalle(key).valueChanges().subscribe(
+     (salle)=>{
+      console.log(salle);
+      this.salle = salle;
+      this.iimages = [this.salle.image.image1,this.salle.image.image2,this.salle.image.image3,this.salle.image.image4];
      }
-   );
+   )
    this.initForm();
   }
 
@@ -129,10 +133,8 @@ export class EditSallesComponent implements OnInit {
     const type = this.salleFormEdit.get('type').value;
     const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,proprio,type);
     console.log(newSalle);
-    const id = this.route.snapshot.params['id'];
-    console.log("le id de la salle a modifier "+ id)
-    //this.sallesService.updateSalle(id,newSalle);
-    this.sallesService.update(this.salle.key, newSalle)
+
+    this.sallesService.update(this.key, newSalle)
     .then(() => console.log('update ok'))
     .catch(err => console.log(err));
     this.router.navigate(['admin/lessalles']);

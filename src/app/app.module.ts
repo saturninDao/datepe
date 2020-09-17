@@ -70,7 +70,7 @@ const appRoutes: Routes = [
   { path: 'admin/compte', canActivate:[AuthGuardService], component: CompteComponent},
   { path: 'admin/lessalles/add-salles', canActivate:[AuthGuardService], component: AddSallesComponent},
   { path: 'admin/lessalles/delete-salles/:id', canActivate:[AuthGuardService], component: DeleteSallesComponent},
-  { path: 'admin/lessalles/edit-salles/view/:id', canActivate:[AuthGuardService], component: EditSallesComponent},
+  { path: 'salles/edit/:id', canActivate:[AuthGuardService], component: EditSallesComponent},
   { path: 'admin/lessalles/info-salles/view/:id', canActivate:[AuthGuardService], component: InfoSallesComponent},
   { path: '', redirectTo: 'accueil', pathMatch: 'full'},
   { path: '**', redirectTo: 'accueil'}

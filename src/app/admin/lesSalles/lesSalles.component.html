@@ -113,8 +113,8 @@
                                                 <a (click)="onViewSalle(salle.key)" class="cursorP fa fa-info"></a>
                                             </td>
                                             <td>
-                                                <a routerLink="../lessalles/edit-salles/view/{{i}}"
-                                                    class="fa fa-pencil"></a>
+                                                <a (click)="onUpdate(salle.key)"
+                                                    class=" cursorP fa fa-pencil"></a>
                                             </td>
                                             <td>
                                                 <a class="fa-trash cursorP" data-toggle="modal"

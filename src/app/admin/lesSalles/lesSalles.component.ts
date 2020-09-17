@@ -13,16 +13,16 @@ import { map } from 'rxjs/operators';
   templateUrl: './lesSalles.component.html',
   styleUrls: ['./lesSalles.component.css']
 })
-export class LesSallesComponent implements OnInit,OnDestroy {
+export class LesSallesComponent implements OnInit, OnDestroy {
 
   salles: Salle[] = [];
   salleSubscriber: Subscription = new Subscription();
   defaultLazyImage = '../../assets/images/chargement.gif';
   signedUserEmail: string;
-  isSalleForMe:boolean;
+  isSalleForMe: boolean;
   currentSalle: any;
   currentIndex: number;
-  constructor(private sallesService: SallesService, private router: Router, private authService: AuthService,  private adminProprioG:AdminProprioGuardService) { }
+  constructor(private sallesService: SallesService, private router: Router, private authService: AuthService, private adminProprioG: AdminProprioGuardService) { }
 
   ngOnInit(): void {
 
@@ -59,20 +59,26 @@ export class LesSallesComponent implements OnInit,OnDestroy {
       .catch(err => console.log(err));
   }
 
-
-
-/*
-  deleteSalle(): void {
-    this.sallesService.delete(this.currentTutorial.key)
-      .then(() => {
-        //this.refreshList.emit();
-        //this.message = 'The tutorial was updated successfully!';
-      })
-      .catch(err => console.log(err));
+  onUpdate(key) {
+    this.router.navigate(['/salles', 'edit', key]);
   }
 
 
-*/
+
+
+
+  /*
+    deleteSalle(): void {
+      this.sallesService.delete(this.currentTutorial.key)
+        .then(() => {
+          //this.refreshList.emit();
+          //this.message = 'The tutorial was updated successfully!';
+        })
+        .catch(err => console.log(err));
+    }
+  
+  
+  */
 
 
 
@@ -98,23 +104,20 @@ export class LesSallesComponent implements OnInit,OnDestroy {
 
 
 
-  verifySalleOwner(salle:Salle){
+  verifySalleOwner(salle: Salle) {
     console.log(this.sallesService.isSalleForMe(salle));
     return this.sallesService.isSalleForMe(salle);
 
   }
-
-
-
 
   chargementPourLesProprietaires() {
     this.sallesService.getSallesForAProprio(this.signedUserEmail);
     this.sallesService.emitSalles();
   }
 
-  chargementPourLesAdmins(){
+  chargementPourLesAdmins() {
     this.sallesService.getSalles();
-   // this.sallesService.emitSalles();
+    // this.sallesService.emitSalles();
   }
 
   onNewSalle() {
