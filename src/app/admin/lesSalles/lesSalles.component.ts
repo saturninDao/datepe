@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { AuthService } from 'src/app/services/auth.service';
 import { AdminProprioGuardService } from 'src/app/services/admin-proprio-guard.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-salles',
@@ -19,37 +20,73 @@ export class LesSallesComponent implements OnInit,OnDestroy {
   defaultLazyImage = '../../assets/images/chargement.gif';
   signedUserEmail: string;
   isSalleForMe:boolean;
+  currentSalle: any;
+  currentIndex: number;
   constructor(private sallesService: SallesService, private router: Router, private authService: AuthService,  private adminProprioG:AdminProprioGuardService) { }
 
   ngOnInit(): void {
 
-   
-
-    this.authService.whoIsConnected().then(
-      (resolve: string) => {
-        this.signedUserEmail = resolve;
-        console.log(this.signedUserEmail);
-      }
-    )
+    this.retrieveSalles();
+  }
 
 
+  refreshList(): void {
+    this.currentSalle = null;
+    this.currentIndex = -1;
+    this.retrieveSalles();
+  }
 
-
-    this.salleSubscriber = this.sallesService.sallesSubject.subscribe(
-      (salles: Salle[]) => {
-        this.salles = salles;
-        console.log(salles);
-      }
-    );
-
-    this.adminProprioG.isAdmin().then((resolve)=>{
-        if(resolve==false){
-          this.chargementPourLesProprietaires();
-        }else{
-          this.chargementPourLesAdmins();
-        }
+  retrieveSalles(): void {
+    this.sallesService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.salles = data;
     });
   }
+
+  setActiveSalle(salle, index): void {
+    this.currentSalle = salle;
+    this.currentIndex = index;
+  }
+
+  removeAllSalles(): void {
+    this.sallesService.deleteAll()
+      .then(() => this.refreshList())
+      .catch(err => console.log(err));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   verifySalleOwner(salle:Salle){

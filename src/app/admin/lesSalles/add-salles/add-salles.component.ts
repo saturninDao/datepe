@@ -53,6 +53,12 @@ export class AddSallesComponent implements OnInit,OnDestroy {
   proprioSuscriber: Subscription = new Subscription();
   salleSuscriber: Subscription = new Subscription();
 
+  /* i was doing this for the new create but not useful
+  imageF:MesImages = new MesImages('','','','');
+  proprietaireF:Proprietaire = new Proprietaire('','','','','');
+  salleF:Salle = new Salle('','','',this.imageF,'','',0,0,this.proprietaireF,'');
+
+  */
   constructor(private formBuilder: FormBuilder,
               private sallesService: SallesService,
               private router:Router,
@@ -142,7 +148,8 @@ export class AddSallesComponent implements OnInit,OnDestroy {
     const type = this.salleForm.get('type').value;
     const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,this.proprietaire,type);
     console.log(newSalle);
-    this.sallesService.createNewSalle(newSalle);
+    //this.sallesService.createNewSalle(newSalle);
+    this.sallesService.create(newSalle);
     this.router.navigate(['admin/lessalles']);
   }
   

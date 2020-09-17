@@ -82,7 +82,8 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order"
+                                        <tr  [class.active]="i == currentIndex"
+                                        (click)="setActiveSalle(salle, i)" class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order"
                                             *ngFor="let salle of salles; let i=index">
                                             <td  class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
                                                 data-title="Order">
