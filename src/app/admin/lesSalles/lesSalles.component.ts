@@ -18,11 +18,12 @@ export class LesSallesComponent implements OnInit,OnDestroy {
   salleSubscriber: Subscription = new Subscription();
   defaultLazyImage = '../../assets/images/chargement.gif';
   signedUserEmail: string;
+  isSalleForMe:boolean;
   constructor(private sallesService: SallesService, private router: Router, private authService: AuthService,  private adminProprioG:AdminProprioGuardService) { }
 
   ngOnInit(): void {
 
-
+   
 
     this.authService.whoIsConnected().then(
       (resolve: string) => {
@@ -30,6 +31,7 @@ export class LesSallesComponent implements OnInit,OnDestroy {
         console.log(this.signedUserEmail);
       }
     )
+
 
 
 
@@ -49,6 +51,16 @@ export class LesSallesComponent implements OnInit,OnDestroy {
     });
   }
 
+
+  verifySalleOwner(salle:Salle){
+    console.log(this.sallesService.isSalleForMe(salle));
+    return this.sallesService.isSalleForMe(salle);
+
+  }
+
+
+
+
   chargementPourLesProprietaires() {
     this.sallesService.getSallesForAProprio(this.signedUserEmail);
     this.sallesService.emitSalles();
@@ -56,7 +68,7 @@ export class LesSallesComponent implements OnInit,OnDestroy {
 
   chargementPourLesAdmins(){
     this.sallesService.getSalles();
-    this.sallesService.emitSalles();
+   // this.sallesService.emitSalles();
   }
 
   onNewSalle() {

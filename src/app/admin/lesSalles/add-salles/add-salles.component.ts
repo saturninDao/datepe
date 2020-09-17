@@ -82,7 +82,7 @@ export class AddSallesComponent implements OnInit,OnDestroy {
     this.salleSuscriber = this.sallesService.sallesSubject.subscribe(
       (salles: Salle[]) => {
         this.salles = salles;
-        console.log(salles);
+        //console.log(salles);
       }
     );
 

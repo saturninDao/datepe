@@ -18,6 +18,38 @@ export class SallesService {
     this.sallesSubject.next(this.salles);
   }
 
+
+  emitForProprio(){
+    this.authService.whoIsConnected().then((resolve:string)=>{
+      this.signedUser=resolve;
+    })
+    let sallesDuProprio: Salle[]=[];
+    this.salles.findIndex(
+        (salle)=>{
+          if(salle.proprio.email==this.signedUser){
+            sallesDuProprio.push(salle);
+            console.log(sallesDuProprio);
+            this.salles = sallesDuProprio;
+          }else{
+            this.salles = [];
+          }
+        }
+      )
+  }
+
+  isSalleForMe(salle: Salle): boolean {
+    this.authService.whoIsConnected().then((resolve: string) => {
+      this.signedUser = resolve;
+    })
+
+    if (salle.proprio.email == this.signedUser) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+
   saveSalles(){
     firebase.database().ref('/salles').set(this.salles);
   }
@@ -60,7 +92,6 @@ export class SallesService {
           }
         )
       })
-      this.emitSalles();
       return sallesDuProprio;
   }
 
