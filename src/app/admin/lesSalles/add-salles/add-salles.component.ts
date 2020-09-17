@@ -1,4 +1,4 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, OnDestroy, OnInit, Type } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
 import { SallesService } from 'src/app/services/salles.service';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-salles.component.html',
   styleUrls: ['./add-salles.component.css']
 })
-export class AddSallesComponent implements OnInit {
+export class AddSallesComponent implements OnInit,OnDestroy {
 
   salleForm: FormGroup;
 
@@ -49,7 +49,9 @@ export class AddSallesComponent implements OnInit {
   file4Uploaded = false;
 
   proprios: Proprietaire[] = [];
+  salles: Salle[] = [];
   proprioSuscriber: Subscription = new Subscription();
+  salleSuscriber: Subscription = new Subscription();
 
   constructor(private formBuilder: FormBuilder,
               private sallesService: SallesService,
@@ -77,6 +79,15 @@ export class AddSallesComponent implements OnInit {
     );
     this.proprioService.getProprios();
     this.proprioService.emitProprios();
+    this.salleSuscriber = this.sallesService.sallesSubject.subscribe(
+      (salles: Salle[]) => {
+        this.salles = salles;
+        console.log(salles);
+      }
+    );
+
+    this.sallesService.getSalles();
+    this.sallesService.emitSalles();
   }
 
   initForm(){
@@ -183,6 +194,10 @@ export class AddSallesComponent implements OnInit {
   }
   detectFiles4(event){
     this.onUploadFile4(event.target.files[0]);
+  }
+
+  ngOnDestroy(): void {
+    this.proprioSuscriber.unsubscribe();
   }
 
 }

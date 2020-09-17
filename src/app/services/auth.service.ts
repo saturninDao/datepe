@@ -79,6 +79,23 @@ createNewUser(email:string, password: string){
       );
   }
 
+
+  whoIsConnected() {
+    return new Promise(
+      (resolve, reject) => {
+        firebase.auth().onAuthStateChanged(
+          (user) => {
+            if (user) {
+              //this.isAuth = true;
+              resolve(user.email);
+            } else {
+              //this.isAuth =false;
+            }
+          }
+        )
+      })
+  }
+
   signOut(){
     firebase.auth().signOut();
   }

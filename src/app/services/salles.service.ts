@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Salle } from '../models/salle.model';
 import { Subject } from 'rxjs';
 import * as firebase from 'firebase';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ import * as firebase from 'firebase';
 export class SallesService {
 
   salles: Salle[] = [];
+  signedUser: string;
   sallesSubject = new Subject<Salle[]>();
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   emitSalles(){
     this.sallesSubject.next(this.salles);
@@ -31,6 +33,37 @@ export class SallesService {
         this.emitSalles();
       })
   }
+
+  getSallesForAProprio(email):Salle[]{
+    this.authService.whoIsConnected().then((resolve:string)=>{
+      this.signedUser=resolve;
+    })
+    let sallesDuProprio: Salle[]=[];
+    firebase.database().ref('/salles')
+      .on('value',(data)=>{
+        this.salles = data.val()?data.val():[];
+        console.log(this.salles);
+
+        const proprioIndexToReturn = this.salles.findIndex(
+          (salle)=>{
+            console.log(salle);
+            console.log(this.signedUser);
+            if(salle.proprio.email==this.signedUser){
+              //return true;
+              sallesDuProprio.push(salle);
+              console.log(sallesDuProprio);
+              this.salles = sallesDuProprio;
+              this.emitSalles();
+            }else{
+              this.salles = [];
+            }
+          }
+        )
+      })
+      this.emitSalles();
+      return sallesDuProprio;
+  }
+
 
   getSallesForHomePage(){
     firebase.database().ref('/salles')

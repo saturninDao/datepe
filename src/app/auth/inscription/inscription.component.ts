@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.css']
 })
-export class InscriptionComponent implements OnInit {
+export class InscriptionComponent implements OnInit,OnDestroy {
 
   signUpForm: FormGroup;
   errorMessage: string;
@@ -88,5 +88,9 @@ onSubmitGoogle(){
 
 }
 
+
+ngOnDestroy(): void {
+  this.proprioSuscriber.unsubscribe();
+}
 
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Proprietaire } from '../models/proprietaire.model';
@@ -12,7 +12,7 @@ import { SallesService } from '../services/salles.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
   title = 'owl-carousel';
 
   iimages = ['../../assets/images/square/04.jpg','../../assets/images/square/05.jpg','../../assets/images/square/06.jpg','../../assets/images/square/07.jpg','../../assets/images/square/08.jpg','../../assets/images/square/09.jpg','../../assets/images/square/10.jpg','../../assets/images/square/11.jpg','../../assets/images/square/05.jpg'];
@@ -119,6 +119,13 @@ export class HomeComponent implements OnInit {
   onViewSalle(id:number){
     this.router.navigate(['/salles','view',id]);
   }
+
+  ngOnDestroy(): void {
+    this.proprioSuscriber.unsubscribe();
+    this.sallesSuscriber.unsubscribe();
+  }
+
+
 
 
 }

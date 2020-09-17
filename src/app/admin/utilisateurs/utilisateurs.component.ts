@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { Subscription } from 'rxjs';
 import { Proprietaire } from 'src/app/models/proprietaire.model';
@@ -10,7 +10,7 @@ import { ProprietairesService } from 'src/app/services/proprietaires.service';
   templateUrl: './utilisateurs.component.html',
   styleUrls: ['./utilisateurs.component.css']
 })
-export class UtilisateursComponent implements OnInit {
+export class UtilisateursComponent implements OnInit,OnDestroy {
  
   proprios: Proprietaire[] = [];
   proprioSubscriber: Subscription = new Subscription();
