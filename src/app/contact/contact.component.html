@@ -55,12 +55,20 @@
                                 <div class="form-group has-placeholder">
                                     <label for="name">Nom <span class="required">*</span></label>
                                     <input formControlName="nom" type="text" aria-required="true" size="30" value=""  name="nom" id="nom" class="form-control" placeholder="Nom">
+                                    <div style="margin-bottom: 10px;"></div>
+                                    <span  class="help-block"
+									*ngIf="!contactForm.get('nom').valid && contactForm.get('nom').touched">Veuillez saisir votre nom!
+									</span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group has-placeholder">
                                     <label for="phone">Téléphone<span class="required">*</span></label>
                                     <input  formControlName="tel" type="text" aria-required="true" size="30" value="" name="tel" id="tel" class="form-control" placeholder="Téléphone">
+                                    <div style="margin-bottom: 10px;"></div>
+                                    <span class="help-block"
+									*ngIf="!contactForm.get('tel').valid && contactForm.get('tel').touched">Veuillez saisir votre contact!
+									</span>
                                 </div>
                             </div>
 
@@ -72,12 +80,18 @@
                                 <div class="form-group has-placeholder">
                                     <label for="email">Email <span class="required">*</span></label>
                                     <input formControlName="email" type="email" aria-required="true" size="30" value=""   name="email" id="email" class="form-control" placeholder="Email">
+                                    <span class="help-block"
+									*ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Veuillez saisir votre mail!
+									</span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group has-placeholder">
                                     <label for="subject">Sujet<span class="required">*</span></label>
                                     <input formControlName="sujet" type="text" aria-required="true" size="30" value="" name="sujet" id="sujet" class="form-control" placeholder="Sujet">
+                                    <span class="help-block"
+									*ngIf="!contactForm.get('sujet').valid && contactForm.get('sujet').touched">Veuillez notifier le sujet de votre mail!
+									</span>
                                 </div>
                             </div>
 
@@ -90,6 +104,9 @@
                                 <div class="form-group has-placeholder">
                                     <label for="message">Message</label>
                                     <textarea formControlName="message" aria-required="true" rows="6" cols="45" name="message" id="message" class="form-control" placeholder="Message"></textarea>
+                                    <span class="help-block"
+									*ngIf="!contactForm.get('message').valid && contactForm.get('message').touched">Veuillez laisser votre message!
+									</span>
                                 </div>
                             </div>
 
