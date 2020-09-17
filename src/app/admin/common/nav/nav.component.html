@@ -1,0 +1,19 @@
+<nav class="woocommerce-MyAccount-navigation">
+    <ul>
+        <li class="is-active">
+            <a routerLink="../../admin/dashboard">Tableau de bord</a>
+        </li>
+        <li>
+            <a routerLink="../../admin/lessalles">Salles</a>
+        </li>
+        <li *ngIf="isAdmin">
+            <a routerLink="../../admin/utilisateurs">Utilisateurs</a>
+        </li>
+        <li>
+            <a routerLink="../../admin/compte">Compte</a>
+        </li>
+        <li>
+            <a style="cursor: pointer;" (click)="signOut()">Se déconnecter</a>
+        </li>
+    </ul>
+</nav>

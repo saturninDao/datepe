@@ -37,19 +37,7 @@
                     <!-- .entry-header -->
                     <div class="entry-content">
                         <div class="woocommerce">
-                            <nav class="woocommerce-MyAccount-navigation">
-                                <ul>
-                                    <li class="is-active">
-                                        <a routerLink="../../lessalles">Liste des salles</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        <!--
-                            <div class="alert alert-danger" role="alert">
-                           
-                            </div>
-                        -->
-
+                            <app-nav></app-nav>
                             <div class="woocommerce-MyAccount-content">
                                 <form [formGroup]="salleForm"
                                  (ngSubmit)="onSaveSalle()" >

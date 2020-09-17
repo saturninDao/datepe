@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyConfig } from '../app/config/config';
 
 import { AuthGuardService } from '../app/services/auth-guard.service';
+import { AdminProprioGuardService } from '../app/services/admin-proprio-guard.service'
 import { AuthService } from '../app/services/auth.service';
 import { ContactService } from '../app/services/contact.service';
 import { HomeService } from '../app/services/home.service';
@@ -43,7 +44,8 @@ import { DeleteUtilisateursComponent } from './admin/utilisateurs/delete-utilisa
 import { TruncateTextPipe } from './truncate-textng.pipe';
 import { OwlModule } from 'ngx-owl-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NavComponent } from './admin/common/nav/nav.component';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -58,10 +60,10 @@ const appRoutes: Routes = [
   { path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
   { path: 'admin/dashboard', canActivate:[AuthGuardService], component: DashboardComponent},
   { path: 'admin/lessalles', canActivate:[AuthGuardService], component: LesSallesComponent },
-  { path: 'admin/utilisateurs', canActivate:[AuthGuardService], component: UtilisateursComponent},  
-  { path: 'admin/utilisateurs/info-utilisateurs', canActivate:[AuthGuardService], component: InfoUtilisateursComponent},
-  { path: 'admin/utilisateurs/edit-utilisateurs/:id', canActivate:[AuthGuardService], component: EditUtilisateursComponent},
-  { path: 'admin/utilisateurs/delete-utilisateurs', canActivate:[AuthGuardService], component: DeleteUtilisateursComponent},
+  { path: 'admin/utilisateurs', canActivate:[AuthGuardService,AdminProprioGuardService], component: UtilisateursComponent},  
+  { path: 'admin/utilisateurs/info-utilisateurs', canActivate:[AuthGuardService,AdminProprioGuardService], component: InfoUtilisateursComponent},
+  { path: 'admin/utilisateurs/edit-utilisateurs/:id', canActivate:[AuthGuardService,AdminProprioGuardService], component: EditUtilisateursComponent},
+  { path: 'admin/utilisateurs/delete-utilisateurs', canActivate:[AuthGuardService,AdminProprioGuardService], component: DeleteUtilisateursComponent},
   { path: 'admin/compte', canActivate:[AuthGuardService], component: CompteComponent},
   { path: 'admin/lessalles/add-salles', canActivate:[AuthGuardService], component: AddSallesComponent},
   { path: 'admin/lessalles/delete-salles/:id', canActivate:[AuthGuardService], component: DeleteSallesComponent},
@@ -99,7 +101,8 @@ const appRoutes: Routes = [
     EditUtilisateursComponent,
     InfoUtilisateursComponent,
     DeleteUtilisateursComponent,
-    TruncateTextPipe
+    TruncateTextPipe,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +123,8 @@ const appRoutes: Routes = [
     HomeService,
     ProprietairesService,
     SallesService,
-    MyConfig
+    MyConfig,
+    AdminProprioGuardService
   ],
   bootstrap: [AppComponent]
 })

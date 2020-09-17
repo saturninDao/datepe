@@ -14,10 +14,10 @@ export class AdminProprioGuardService {
       (resolve,reject)=>{
         firebase.auth().onAuthStateChanged(
           (user)=>{
-            if(user.email){
+            if(user.email=='saturnindao@gmail.com'||user.email=='florencenkpedji9@gmail.com'||user.email=='sasa.berley@yahoo.com'){
               resolve(true);
             }else{
-              this.router.navigate(['/auth','connexion']);
+              this.router.navigate(['/accueil']);
               resolve(false);
             }
           }
@@ -25,4 +25,23 @@ export class AdminProprioGuardService {
       }
     )
   }
+
+  isAdmin(){
+    return new Promise(
+      (resolve,reject)=>{
+        firebase.auth().onAuthStateChanged(
+          (user)=>{
+            if(user.email=='saturnindao@gmail.com'||user.email=='florencenkpedji9@gmail.com'||user.email=='sasa.berley@yahoo.com'){
+              resolve(true);
+            }else{
+              //this.router.navigate(['/accueil','connexion']);
+              resolve(false);
+            }
+          }
+        )
+      }
+    )
+  }
+
+  
 }
