@@ -3,16 +3,49 @@ import { Salle } from '../models/salle.model';
 import { Subject } from 'rxjs';
 import * as firebase from 'firebase';
 import { AuthService } from './auth.service';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SallesService {
 
+  private dbPath = '/salles2';
+
+  sallesRef: AngularFireList<Salle> = null;
+
   salles: Salle[] = [];
   signedUser: string;
   sallesSubject = new Subject<Salle[]>();
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService,private db: AngularFireDatabase) {
+    this.sallesRef = db.list(this.dbPath);
+   }
+
+
+
+   getAll(): AngularFireList<Salle> {
+    return this.sallesRef;
+  }
+
+  create(salle: Salle): any {
+    return this.sallesRef.push(salle);
+  }
+
+  update(key: string, value: any): Promise<void> {
+    return this.sallesRef.update(key, value);
+  }
+
+  delete(key: string): Promise<void> {
+    return this.sallesRef.remove(key);
+  }
+
+  deleteAll(): Promise<void> {
+    return this.sallesRef.remove();
+  }
+
+
+
 
   emitSalles(){
     this.sallesSubject.next(this.salles);

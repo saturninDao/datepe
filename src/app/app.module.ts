@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AppRoutingModule } from '../app/app-routing.module';
 import { LazyLoadImageModule } from 'ng-lazyload-image'; 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -46,6 +48,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NavComponent } from './admin/common/nav/nav.component';
+import { environment } from 'src/environments/environment';
 
 const appRoutes: Routes = [
   { path: 'auth/inscription', component: InscriptionComponent},
@@ -114,7 +117,9 @@ const appRoutes: Routes = [
     OwlModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
   providers: [
     AuthGuardService,
