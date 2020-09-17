@@ -3,6 +3,7 @@ import { Salle } from '../models/salle.model';
 import { Subscription } from 'rxjs';
 import { SallesService } from '../services/salles.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -15,18 +16,48 @@ export class SallesComponent implements OnInit,OnDestroy {
   salleSubscriber: Subscription = new Subscription();
   defaultLazyImage = '../../assets/images/chargement.gif';
 
+  currentSalle: any;
+  currentIndex: number;
   constructor(private sallesService: SallesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.salleSubscriber = this.sallesService.sallesSubject.subscribe(
-      (salles: Salle[])=>{
-        this.salles = salles;
-        console.log(salles);
-      }
-    );
-    this.sallesService.getSalles();
-    this.sallesService.emitSalles();
+      this.retrieveSalles();
   }
+
+
+
+  refreshList(): void {
+    this.currentSalle = null;
+    this.currentIndex = -1;
+    this.retrieveSalles();
+  }
+
+  retrieveSalles(): void {
+    this.sallesService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.salles = data;
+    });
+  }
+
+  setActiveSalle(salle, index): void {
+    this.currentSalle = salle;
+    this.currentIndex = index;
+  }
+
+
+
+
+
+
+
+
+
+
 
   onViewSalle(id:number){
     this.router.navigate(['/salles','view',id]);
