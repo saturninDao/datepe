@@ -1,0 +1,8 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+span.help-block{
+    margin-top: 6px;
+    display: block;
+}

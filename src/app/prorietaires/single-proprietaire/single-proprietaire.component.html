@@ -102,17 +102,26 @@
                                     <p class="contact-form-name">
 
                                         <input formControlName="name" type="text" aria-required="true" size="30" value="" name="name"  id="name" class="form-control" placeholder="Nom" required="">
+                                        <span class="help-block" 
+                                        *ngIf="!contactProprioForm.get('name').valid && contactProprioForm.get('name').touched">Veuillez renseigner votre nom!
+                                        </span>
                                     </p>
                                     <p class="contact-form-email">
 
                                         <input formControlName="email" type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="Email" required="">
+                                        <span class="help-block"
+                                        *ngIf="!contactProprioForm.get('email').valid && contactProprioForm.get('email').touched">Veuillez renseigner votre email!
+                                        </span>
                                     </p>
                                     <p class="contact-form-message">
                                         <textarea formControlName="message" aria-required="true" rows="8" cols="45" name="message" id="message" class="form-control" placeholder="Message" required=""></textarea>
+                                        <span class="help-block"
+                                        *ngIf="!contactProprioForm.get('message').valid && contactProprioForm.get('message').touched">Laissez nous votre mot!
+                                        </span>
                                     </p>
                                     <mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
                                     <p class="form-submit">
-                                        <button  [disabled]="contactProprioForm.invalid" type="submit" id="submit" name="submit" class="submit">Envoyer
+                                        <button  [disabled]="contactProprioForm.invalid" type="submit" id="submit" name="submit" class="btn btn-maincolor btn-block">Envoyer
                                         </button>
                                     </p>
                                 </form>

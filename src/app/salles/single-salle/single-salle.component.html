@@ -143,25 +143,34 @@
 											<p class="comment-form-comment">
 												<label for="comment">Laissez un mot <span class="required">*</span>
 												</label>
-												<textarea formControlName="message" id="message" name="comment" cols="45" rows="8"
+												<textarea formControlName="message" id="message" name="message" cols="45" rows="8"
 													aria-required="true" required="">
 
 												</textarea>
+												<span class="help-block"
+												*ngIf="!reservationForm.get('message').valid && reservationForm.get('message').touched">Laissez un mot!
+												</span>
 											</p>
 											<p class="comment-form-author">
 												<label for="author">Nom <span class="required">*</span>
 												</label>
 												<input formControlName="nom" id="nom" name="nom" type="text" value="" size="30"
 													aria-required="true" required="">
+												<span class="help-block"
+												*ngIf="!reservationForm.get('nom').valid && reservationForm.get('nom').touched">Veuillez renseigner votre nom!
+												</span>
 											</p>
 											<p class="comment-form-email">
 												<label for="email">Email <span class="required">*</span>
 												</label> <input formControlName="email" id="email" name="email" type="email" value="" size="30"
 													aria-required="true" required="">
+													<span class="help-block"
+													*ngIf="!reservationForm.get('email').valid && reservationForm.get('email').touched">Veuillez renseigner votre mail!
+													</span>
 											</p>
 											<mat-progress-bar *ngIf="isEncoursDEnvoie" mode="query"></mat-progress-bar>
 											<p class="form-submit">
-												<button [disabled]="reservationForm.invalid" name="submit" type="submit" id="submit" class="submit">
+												<button [disabled]="reservationForm.invalid" name="submit" type="submit" id="submit" class="btn btn-maincolor btn-block">
 													Je demande ma réservation
 													</button>
 											</p>
