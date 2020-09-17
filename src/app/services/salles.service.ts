@@ -44,6 +44,10 @@ export class SallesService {
     return this.sallesRef.remove();
   }
 
+  getOneSalle(key){
+    return this.db.object('/salles2/'+key);
+  }
+
 
 
 

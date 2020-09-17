@@ -61,9 +61,18 @@ export class LesSallesComponent implements OnInit,OnDestroy {
 
 
 
+/*
+  deleteSalle(): void {
+    this.sallesService.delete(this.currentTutorial.key)
+      .then(() => {
+        //this.refreshList.emit();
+        //this.message = 'The tutorial was updated successfully!';
+      })
+      .catch(err => console.log(err));
+  }
 
 
-
+*/
 
 
 
@@ -116,7 +125,7 @@ export class LesSallesComponent implements OnInit,OnDestroy {
     this.sallesService.removeSalle(salle);
   }
 
-  onViewSalle(id: number) {
+  onViewSalle(id) {
     this.router.navigate(['/salles', 'view', id]);
   }
 

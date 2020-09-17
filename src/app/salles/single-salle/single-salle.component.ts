@@ -22,13 +22,14 @@ export class SingleSalleComponent implements OnInit {
   mySlideOptions={items: 1, dots: true, nav: true};
   myCarouselOptions={items: 3, dots: true, nav: true};
 
-  salle:Salle;
+  salle:any;
   lesimages:MesImages;
   leProprietaire:Proprietaire;
   reservationForm: FormGroup;
   isEncoursDEnvoie:boolean;
   isMessageEnvoye:boolean;
 
+  key:any;
 
   constructor(private route:ActivatedRoute,
               private router:Router,
@@ -43,15 +44,15 @@ export class SingleSalleComponent implements OnInit {
    this.leProprietaire = new Proprietaire('','','','','');
    this.salle = new Salle('','','',this.lesimages,'','',0,0,this.leProprietaire,'');
    //We get the id of the book we are about to look at
-   const id = this.route.snapshot.params['id'];
-   this.salleService.getSingle(+id).then(
-     (salle:Salle)=>{
-       this.salle = salle;
-       console.log(salle);
-       this.iimages = [this.salle.image.image1,this.salle.image.image2,this.salle.image.image3,this.salle.image.image4];
-       console.log('image list'+this.iimages);
+   const key = this.route.snapshot.params['id'];
+   this.key = key;
+   this.salle = this.salleService.getOneSalle(key).valueChanges().subscribe(
+     (salle)=>{
+      console.log(salle);
+      this.salle = salle;
+      this.iimages = [this.salle.image.image1,this.salle.image.image2,this.salle.image.image3,this.salle.image.image4];
      }
-   );
+   )
   }
 
   onBack(){

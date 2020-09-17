@@ -87,6 +87,11 @@ export class EditSallesComponent implements OnInit {
     
   }
 
+
+
+
+  
+
   onSaveSalle(){
     console.log("HI");
     const categorie = this.salleFormEdit.get('categorie').value;
@@ -126,7 +131,10 @@ export class EditSallesComponent implements OnInit {
     console.log(newSalle);
     const id = this.route.snapshot.params['id'];
     console.log("le id de la salle a modifier "+ id)
-    this.sallesService.updateSalle(id,newSalle);
+    //this.sallesService.updateSalle(id,newSalle);
+    this.sallesService.update(this.salle.key, newSalle)
+    .then(() => console.log('update ok'))
+    .catch(err => console.log(err));
     this.router.navigate(['admin/lessalles']);
   }
 
