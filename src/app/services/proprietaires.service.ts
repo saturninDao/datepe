@@ -46,7 +46,7 @@ export class ProprietairesService {
   }
 
   getProprioByEmail(email:string){
-
+/*
     let leKeyARetourner;
     this.db.list('/utilisateurs2').query.orderByChild('email').equalTo('daomag30@yahoo.com').on("child_added", function(snapshot) {
       console.log(snapshot.key + " was " + snapshot.val());
@@ -54,7 +54,9 @@ export class ProprietairesService {
   }
     )
 
-    return leKeyARetourner; 
+    return leKeyARetourner; */
+    return this.db.list('/utilisateurs2', ref => ref.orderByChild('email').limitToFirst(1).equalTo(email)).valueChanges()
+    //return this.db.object('/utilisateurs2', ref => ref.orderByChild('email').equalTo(email)).valueChanges()
   }
 
 

@@ -22,7 +22,7 @@ export class AddSallesComponent implements OnInit,OnDestroy {
   signedUserEmail: string;
   signedUserNomPrenom: string;
   signedUserNumTel: string;
-  proprietaire:Proprietaire;
+  proprietaire:any;
   idP: number;
   imageParDefaut = 'https://firebasestorage.googleapis.com/v0/b/booksdao-dfe43.appspot.com/o/images%2F1599587492422sfrDElmh7i%20(3).png?alt=media&token=52e383b6-5aef-461c-841c-55b9b4935034';
   image1: string;
@@ -54,8 +54,13 @@ export class AddSallesComponent implements OnInit,OnDestroy {
     this.authService.whoIsConnected().then((resolve:string)=>{
         this.signedUserEmail = resolve;
         console.log(resolve);
-        let key = this.proprioService.getProprioByEmail(this.signedUserEmail);
-        console.log(key);
+        let key = this.proprioService.getProprioByEmail(this.signedUserEmail).subscribe(
+          (proprio)=>{
+            console.log(proprio);
+            this.proprietaire = proprio;
+          }
+        );
+        //console.log(key);
     })
     
    // console.log(this.proprioService.getProprioByEmail(this.signedUserEmail));
@@ -112,10 +117,10 @@ export class AddSallesComponent implements OnInit,OnDestroy {
     const nombrePlace = this.salleForm.get('nombrePlace').value;
     const prix = this.salleForm.get('prix').value;
     console.log("Email a rechercher " + this.signedUserEmail);
-    this.proprietaire = this.proprioService.getUserDataByEmail(this.signedUserEmail);
+   // this.proprietaire = this.proprioService.getUserDataByEmail(this.signedUserEmail);
     console.log(this.proprietaire);
     const type = this.salleForm.get('type').value;
-    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,this.proprietaire,type);
+    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,this.proprietaire[0],type);
     console.log(newSalle);
     //this.sallesService.createNewSalle(newSalle);
     this.sallesService.create(newSalle);
