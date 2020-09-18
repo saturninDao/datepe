@@ -69,9 +69,6 @@ export class ProprietairesService {
 
 
 
-
-
-
   emitProprios() {
     this.propriosSubject.next(this.prorietaires);
   }

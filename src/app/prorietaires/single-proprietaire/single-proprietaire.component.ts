@@ -13,12 +13,13 @@ import { SallesService } from 'src/app/services/salles.service';
 })
 export class SingleProprietaireComponent implements OnInit {
 
-  proprio:Proprietaire;
+  proprio:any;
   idDeLaRoute:number;
   contactProprioForm: FormGroup;
 
   isEncoursDEnvoie:boolean;
   isMessageEnvoye:boolean;
+  key: any;
   
   constructor(private route:ActivatedRoute,
               private router:Router,
@@ -31,19 +32,18 @@ export class SingleProprietaireComponent implements OnInit {
    // We create empty book wating for the promise of service to avoid errors
    this.proprio = new Proprietaire('','','','','');
    //We get the id of the book we are about to look at
-   let id = this.route.snapshot.params['id'];
-   this.idDeLaRoute = parseInt(id);
-   this.proprioService.getSingle(+id).then(
-     (proprio:Proprietaire)=>{
-       this.proprio = proprio;
+   const key = this.route.snapshot.params['id'];
+   this.key = key;
+   this.proprio = this.proprioService.getOne(key).valueChanges().subscribe(
+     (proprio)=>{
+      console.log(proprio);
+      this.proprio = proprio;
      }
-   );
-   
-   console.log('sendEmail()');
+   )
   }
 
   onBack(){
-    this.router.navigate(['salles']);
+    this.router.navigate(['proprietaires']);
   }
 
   initForm(){

@@ -31,12 +31,12 @@
                     <div class="item-media">
                         <img alt="img" src="../../assets/images/team/0{{i+1}}.jpg">
                         <div class="media-links">
-                            <a class="abs-link" title="" routerLink="view/{{i}}"></a>
+                            <a class="abs-link cursorP" title="" (click)="onViewProprio(proprio.key)"></a>
                         </div>
                     </div>
                     <div class="item-content">
                         <h5>
-                            <a routerLink="view/1">
+                            <a (click)="onViewProprio(proprio.key)">
                                {{proprio.nomPrenom}}</a>
                         </h5>
 
@@ -51,16 +51,10 @@
                             <a class="fa fa-twitter border-icon round color-icon border-icon rounded-icon" title="twitter"></a>
                             <a class="fa fa-google border-icon round color-icon border-icon rounded-icon" title="google"></a>
                         </span>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
         <div class="d-none d-lg-block divider-80"></div>
-
-
     </div>
-
 </section>
