@@ -9,9 +9,11 @@
         <li *ngIf="isAdmin" routerLinkActive="is-active">
             <a [routerLink]="['/admin/utilisateurs']">Utilisateurs</a>
         </li>
+        <!--
         <li routerLinkActive="is-active">
             <a [routerLink]="['/admin/compte']">Compte</a>
         </li>
+    -->
         <li routerLinkActive="is-active">
             <a style="cursor: pointer;" (click)="signOut()">Se déconnecter</a>
         </li>
