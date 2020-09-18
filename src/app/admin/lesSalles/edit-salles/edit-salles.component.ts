@@ -91,11 +91,6 @@ export class EditSallesComponent implements OnInit {
     
   }
 
-
-
-
-  
-
   onSaveSalle(){
     console.log("HI");
     const categorie = this.salleFormEdit.get('categorie').value;

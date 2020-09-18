@@ -8,6 +8,7 @@ import { MesImages } from 'src/app/models/mesimages.model';
 import * as firebase from 'firebase';
 import { ProprietairesService } from 'src/app/services/proprietaires.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-salles',
@@ -17,83 +18,50 @@ import { Subscription } from 'rxjs';
 export class AddSallesComponent implements OnInit,OnDestroy {
 
   salleForm: FormGroup;
-
   signedUserAdresse: string;
   signedUserEmail: string;
   signedUserNomPrenom: string;
   signedUserNumTel: string;
-
   proprietaire:Proprietaire;
   idP: number;
-
   imageParDefaut = 'https://firebasestorage.googleapis.com/v0/b/booksdao-dfe43.appspot.com/o/images%2F1599587492422sfrDElmh7i%20(3).png?alt=media&token=52e383b6-5aef-461c-841c-55b9b4935034';
   image1: string;
   image2: string;
   image3: string;
   image4: string;
-
   file1IsUploading: boolean = false;
   file1Url:string;
   file1Uploaded = false;
-
   file2IsUploading: boolean = false;
   file2Url:string;
   file2Uploaded = false;
-
   file3IsUploading: boolean = false;
   file3Url:string;
   file3Uploaded = false;
-
   file4IsUploading: boolean = false;
   file4Url:string;
   file4Uploaded = false;
 
-  proprios: Proprietaire[] = [];
-  salles: Salle[] = [];
-  proprioSuscriber: Subscription = new Subscription();
-  salleSuscriber: Subscription = new Subscription();
-
-  /* i was doing this for the new create but not useful
-  imageF:MesImages = new MesImages('','','','');
-  proprietaireF:Proprietaire = new Proprietaire('','','','','');
-  salleF:Salle = new Salle('','','',this.imageF,'','',0,0,this.proprietaireF,'');
-
-  */
   constructor(private formBuilder: FormBuilder,
               private sallesService: SallesService,
               private router:Router,
-              private proprioService: ProprietairesService
+              private proprioService: ProprietairesService,
+              private authService: AuthService
               ) { }
 
   ngOnInit(): void {
     this.initForm();
-    firebase.auth().onAuthStateChanged(
-      (user)=>{
-        if(user){
-          //this.isAuth = true;
-          this.signedUserEmail = user.email;
-        }else{
-          //this.isAuth =false;
-        }
-      }
-    )
-    this.proprioSuscriber = this.proprioService.propriosSubject.subscribe(
-      (proprios: Proprietaire[])=>{
-        this.proprios = proprios;
-        console.log(proprios);
-      }
-    );
-    this.proprioService.getProprios();
-    this.proprioService.emitProprios();
-    this.salleSuscriber = this.sallesService.sallesSubject.subscribe(
-      (salles: Salle[]) => {
-        this.salles = salles;
-        //console.log(salles);
-      }
-    );
+    this.authService.whoIsConnected().then((resolve:string)=>{
+        this.signedUserEmail = resolve;
+        console.log(resolve);
+        let key = this.proprioService.getProprioByEmail(this.signedUserEmail);
+        console.log(key);
+    })
+    
+   // console.log(this.proprioService.getProprioByEmail(this.signedUserEmail));
 
-    this.sallesService.getSalles();
-    this.sallesService.emitSalles();
+  
+
   }
 
   initForm(){
@@ -108,6 +76,7 @@ export class AddSallesComponent implements OnInit,OnDestroy {
       type: ['',Validators.required],
     });
   }
+  
 
 
   onSaveSalle(){
@@ -137,7 +106,7 @@ export class AddSallesComponent implements OnInit,OnDestroy {
       }
 
     const image = new MesImages(this.image1,this.image2,this.image3,this.image4);
-    console.log(this.proprios);
+   // console.log(this.proprios);
     const lieu = this.salleForm.get('lieu').value;
     const nomSalle = this.salleForm.get('nomSalle').value;
     const nombrePlace = this.salleForm.get('nombrePlace').value;
@@ -204,7 +173,7 @@ export class AddSallesComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.proprioSuscriber.unsubscribe();
+   
   }
 
 }

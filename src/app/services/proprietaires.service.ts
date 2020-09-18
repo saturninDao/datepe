@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { Subject } from 'rxjs';
 import { Proprietaire } from '../models/proprietaire.model';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,18 @@ export class ProprietairesService {
 
   getOne(key){
     return this.db.object('/utilisateurs2/'+key);
+  }
+
+  getProprioByEmail(email:string){
+
+    let leKeyARetourner;
+    this.db.list('/utilisateurs2').query.orderByChild('email').equalTo('daomag30@yahoo.com').on("child_added", function(snapshot) {
+      console.log(snapshot.key + " was " + snapshot.val());
+      leKeyARetourner = snapshot.key;
+  }
+    )
+
+    return leKeyARetourner; 
   }
 
 

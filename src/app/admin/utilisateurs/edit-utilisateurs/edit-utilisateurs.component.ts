@@ -11,10 +11,12 @@ import { ProprietairesService } from 'src/app/services/proprietaires.service';
 })
 
 export class EditUtilisateursComponent implements OnInit {
-  proprio: Proprietaire;
+
   editUserForm: FormGroup;
   nom: string;
   prenom: string;
+  key: any;
+  proprio: any;
   constructor(private route:ActivatedRoute,
     private router:Router,
     private formBuilder: FormBuilder,
@@ -22,19 +24,17 @@ export class EditUtilisateursComponent implements OnInit {
 
 ngOnInit(): void {
 
-// We create empty book wating for the promise of service to avoid errors
+// We create empty PROP wating for the promise of service to avoid errors
 this.proprio = new Proprietaire('','','','','');
-//We get the id of the book we are about to look at
-const id = this.route.snapshot.params['id'];
-this.proprioService.getSingle(+id).then(
-(proprio:Proprietaire)=>{
-this.proprio = proprio;
-const tabNP = this.proprio.nomPrenom.split(' ',2);
-this.nom = tabNP[1];
-this.prenom = tabNP[0];
-console.log(proprio);
-}
-);
+
+const key = this.route.snapshot.params['id'];
+this.key = key;
+this.proprio = this.proprioService.getOne(key).valueChanges().subscribe(
+  (proprio)=>{
+   console.log(proprio);
+   this.proprio = proprio;
+  }
+)
 this.initForm();
 }
 
@@ -79,8 +79,12 @@ const newProprio = new Proprietaire(adresse,description,email,nomPrenom,numTel);
 console.log(newProprio);
 const id = this.route.snapshot.params['id'];
 console.log("le id de la salle a modifier "+ id)
-this.proprioService.updateProprio(id,newProprio);
-this.router.navigate(['admin/utilisateurs']);
+//this.proprioService.updateProprio(id,newProprio);
+//this.router.navigate(['admin/utilisateurs']);
+    /**/this.proprioService.update(this.key, newProprio)
+    .then(() => console.log('update ok'))
+    .catch(err => console.log(err));
+    this.router.navigate(['admin/propretaires']);/**/
 }
 
 }

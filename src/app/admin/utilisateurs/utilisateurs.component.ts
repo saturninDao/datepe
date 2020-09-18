@@ -59,6 +59,10 @@ export class UtilisateursComponent implements OnInit, OnDestroy {
     this.router.navigate(['/proprietaires', 'view', id]);
   }
 
+  onUpdate(key) {
+    this.router.navigate(['/users', 'edit', key]);
+  }
+
   ngOnDestroy() {
     this.proprioSubscriber.unsubscribe();
   }

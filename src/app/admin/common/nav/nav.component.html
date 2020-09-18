@@ -1,19 +1,19 @@
 <nav class="woocommerce-MyAccount-navigation">
     <ul>
         <li routerLinkActive="is-active" class="">
-            <a routerLink="../../admin/dashboard">Tableau de bord</a>
+            <a [routerLink]="['/admin/dashboard']">Tableau de bord</a>
         </li>
         <li routerLinkActive="is-active">
-            <a routerLinkActive="active" routerLink="../../admin/lessalles">Salles</a>
+            <a [routerLink]="['/admin/lessalles']">Salles</a>
         </li>
         <li *ngIf="isAdmin" routerLinkActive="is-active">
-            <a routerLink="../../admin/utilisateurs">Utilisateurs</a>
+            <a [routerLink]="['/admin/utilisateurs']">Utilisateurs</a>
         </li>
         <li routerLinkActive="is-active">
-            <a routerLinkActive="active" routerLink="../../admin/compte">Compte</a>
+            <a [routerLink]="['/admin/compte']">Compte</a>
         </li>
         <li routerLinkActive="is-active">
-            <a routerLinkActive="active" style="cursor: pointer;" (click)="signOut()">Se déconnecter</a>
+            <a style="cursor: pointer;" (click)="signOut()">Se déconnecter</a>
         </li>
     </ul>
 </nav>

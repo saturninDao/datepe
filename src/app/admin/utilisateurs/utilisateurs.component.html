@@ -87,10 +87,10 @@
                                                 <a (click)="onViewProprio(proprio.key)"    class="cursorP fa fa-info"></a> 
                                             </td>
                                             <td>
-                                                <a routerLink="../utilisateurs/edit-utilisateurs/{{i}}" class="fa fa-pencil"></a> 
+                                                <a (click)="onUpdate(proprio.key)" class="cursorP fa fa-pencil"></a> 
                                             </td>
                                             <td>
-                                                <a routerLink="../utilisateurs/delete-utilisateurs" class="fa-trash"></a> 
+                                                <!-- <a routerLink="../utilisateurs/delete-utilisateurs" class="fa-trash"></a>  -->
                                             </td>
                                         </tr>
 
