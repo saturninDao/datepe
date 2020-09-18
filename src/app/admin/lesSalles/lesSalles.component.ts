@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Salle } from 'src/app/models/salle.model';
 import { Subscription } from 'rxjs';
 import { SallesService } from 'src/app/services/salles.service';
@@ -7,6 +7,10 @@ import * as firebase from 'firebase';
 import { AuthService } from 'src/app/services/auth.service';
 import { AdminProprioGuardService } from 'src/app/services/admin-proprio-guard.service';
 import { map } from 'rxjs/operators';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Proprietaire } from 'src/app/models/proprietaire.model';
+import { MesImages } from 'src/app/models/mesimages.model';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-salles',
@@ -22,7 +26,23 @@ export class LesSallesComponent implements OnInit, OnDestroy {
   isSalleForMe: boolean;
   currentSalle: any;
   currentIndex: number;
-  constructor(private sallesService: SallesService, private router: Router, private authService: AuthService, private adminProprioG: AdminProprioGuardService) { }
+  constructor(private sallesService: SallesService, 
+    private router: Router, 
+    private authService: AuthService, 
+    private adminProprioG: AdminProprioGuardService,
+    public dialog: MatDialog) { }
+
+    openDialog(salle?): void {
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        hasBackdrop:false,
+        data: {salleToDelete: salle}
+
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
 
   ngOnInit(): void {
 
@@ -93,17 +113,6 @@ export class LesSallesComponent implements OnInit, OnDestroy {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   verifySalleOwner(salle: Salle) {
     console.log(this.sallesService.isSalleForMe(salle));
     return this.sallesService.isSalleForMe(salle);
@@ -124,9 +133,6 @@ export class LesSallesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/salles', 'new']);
   }
 
-  onDeleteSalle(salle: Salle) {
-    this.sallesService.removeSalle(salle);
-  }
 
   onViewSalle(id) {
     this.router.navigate(['/salles', 'view', id]);
@@ -135,5 +141,34 @@ export class LesSallesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.salleSubscriber.unsubscribe();
   }
+
+}
+
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl:'./modalSuppression.component.html'
+})
+export class DialogOverviewExampleDialog {
+
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    private sallesService: SallesService,
+    @Inject(MAT_DIALOG_DATA) public data) {
+      console.log(data);
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onDeleteSalle(key) {
+    this.sallesService.delete(key).then(()=>{
+      this.dialogRef.close();
+    });
+
+  }
+
 
 }

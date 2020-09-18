@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p> Souhaiter vous supprimer definitivement la salle
+    {{data.salleToDelete.nomSalle}} ?</p>
+    <br>
+    <br>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Merci</button>
+  <button (click)="onDeleteSalle(data.salleToDelete.key)" cdkFocusInitial>Supprimer</button>
+</div>

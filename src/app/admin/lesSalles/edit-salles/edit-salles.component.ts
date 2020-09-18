@@ -131,13 +131,14 @@ export class EditSallesComponent implements OnInit {
     const prix = this.salleFormEdit.get('prix').value;
     const proprio = new Proprietaire('Pas defini','Pas defini','Pas defini','Pas defini','Pas defini');
     const type = this.salleFormEdit.get('type').value;
-    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,proprio,type);
+    console.log('ya qoi ici'+(this.salle.proprio.nomPrenom));
+    const newSalle = new Salle(categorie,description,etatSalle,image,lieu,nomSalle,nombrePlace,prix,this.salle.proprio,type);
     console.log(newSalle);
 
-    this.sallesService.update(this.key, newSalle)
+    /**/this.sallesService.update(this.key, newSalle)
     .then(() => console.log('update ok'))
     .catch(err => console.log(err));
-    this.router.navigate(['admin/lessalles']);
+    this.router.navigate(['admin/lessalles']);/**/
   }
 
   onUploadFile1(file:File){

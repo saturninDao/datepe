@@ -117,11 +117,10 @@
                                                     class=" cursorP fa fa-pencil"></a>
                                             </td>
                                             <td>
-                                                <a class="fa-trash cursorP" data-toggle="modal"
-                                                    data-target="#exampleModal"></a>
+                                                <a (click)="openDialog(salle)" class="cursorP fa fa-trash"></a>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                <div class="modal fade" id="#exampleModal{{i}}" tabindex="-1" role="dialog"
                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -140,7 +139,7 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Annuler</button>
-                                                                <button data-dismiss="modal" (click)="onDeleteSalle(salle)" type="button"
+                                                                <button data-dismiss="modal" (click)="onDeleteSalle(salle.key)" type="button"
                                                                     class="btn btn-primary">Confirmer</button>
                                                             </div>
                                                         </div>

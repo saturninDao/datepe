@@ -5,6 +5,7 @@ import { AppRoutingModule } from '../app/app-routing.module';
 import { LazyLoadImageModule } from 'ng-lazyload-image'; 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
@@ -117,6 +118,7 @@ const appRoutes: Routes = [
     OwlModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
+    MatDialogModule,
     LazyLoadImageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
