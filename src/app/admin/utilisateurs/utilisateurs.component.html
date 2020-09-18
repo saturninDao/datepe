@@ -68,8 +68,7 @@
 
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
-                                                <img src="../../../assets/images/events/01.jpg" alt="logo" >
-                                                   
+                                                <img src="../../../assets/images/team/empty-avatar.png" alt="logo" >
 
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date" >
@@ -85,7 +84,7 @@
                                                 {{proprio.email}}
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
-                                                <a (click)="onViewProprio(i)"    class="fa fa-info"></a> 
+                                                <a (click)="onViewProprio(proprio.key)"    class="cursorP fa fa-info"></a> 
                                             </td>
                                             <td>
                                                 <a routerLink="../utilisateurs/edit-utilisateurs/{{i}}" class="fa fa-pencil"></a> 
