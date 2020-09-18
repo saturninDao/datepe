@@ -46,7 +46,24 @@ export class LesSallesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.retrieveSalles();
+    this.authService.whoIsConnected().then((resolve:string)=>{
+      this.signedUserEmail = resolve;
+      console.log(resolve);
+      //console.log(key);
+  })
+
+
+  this.adminProprioG.isAdmin().then((resolve)=>{
+    if(resolve==false){
+      this.retrieveSallesForUser();
+    }else{
+      this.retrieveSalles();
+    }
+});
+
+
+
+   // this.retrieveSallesForUser();
   }
 
 
@@ -68,14 +85,24 @@ export class LesSallesComponent implements OnInit, OnDestroy {
     });
   }
 
-  retrieveSallesForUser(email): void {
-    this.sallesService.getSallesForAProprio(email)
-    .map((c =>
-        ({ key: c.key, ...c.payload.val() })
-      )
+  retrieveSallesForUser(): void {
+    let lesSalles;
+    this.sallesService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
       )
     ).subscribe(data => {
-      this.salles = data;
+ 
+
+      data.forEach(oneData => {
+        if(oneData.proprio.email==this.signedUserEmail){
+          this.salles.push(oneData);
+        }
+      });
+
+
     });
   }
 
