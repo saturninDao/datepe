@@ -61,6 +61,21 @@ export class ProprietairesService {
 
 
 
+  
+  getSallesForAUser(email:string){
+    /*
+        let leKeyARetourner;
+        this.db.list('/utilisateurs2').query.orderByChild('email').equalTo('daomag30@yahoo.com').on("child_added", function(snapshot) {
+          console.log(snapshot.key + " was " + snapshot.val());
+          leKeyARetourner = snapshot.key;
+      }
+        )
+    
+        return leKeyARetourner; */
+        return this.db.list('/salles2', ref => ref.orderByChild('proprio/email').equalTo(email)).valueChanges()
+        //return this.db.object('/utilisateurs2', ref => ref.orderByChild('email').equalTo(email)).valueChanges()
+      }
+
 
 
 

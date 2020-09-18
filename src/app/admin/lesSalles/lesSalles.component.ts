@@ -68,6 +68,21 @@ export class LesSallesComponent implements OnInit, OnDestroy {
     });
   }
 
+  retrieveSallesForUser(email): void {
+    this.sallesService.getSallesForAProprio(email).snap
+    
+    
+    
+    map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.salles = data;
+    });
+  }
+
   setActiveSalle(salle, index): void {
     this.currentSalle = salle;
     this.currentIndex = index;
