@@ -113,7 +113,7 @@ export class LesSallesComponent implements OnInit, OnDestroy {
 
   removeAllSalles(): void {
     this.sallesService.deleteAll()
-      .then(() => this.refreshList())
+      .then()
       .catch(err => console.log(err));
   }
 

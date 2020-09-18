@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Proprietaire } from '../models/proprietaire.model';
 import { Salle } from '../models/salle.model';
 import { ProprietairesService } from '../services/proprietaires.service';
@@ -31,22 +32,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    this.sallesSuscriber = this.sallesService.sallesSubject.subscribe(
-      (salles: Salle[])=>{
-        this.salles = salles;
-        console.log(salles);
-      }
-    );
-    this.sallesService.getSallesForHomePage();
-    this.sallesService.emitSalles();
-    this.proprioSuscriber = this.propriosService.propriosSubject.subscribe(
-      (proprios:Proprietaire[])=>{
-        this.proprios = proprios;
-        console.log(proprios);
-      }
-    );
-    this.propriosService.getProprios();
-    this.propriosService.emitProprios();
+    this.retrieveSalles();
   }
 
   carouselOptions = {
@@ -115,8 +101,21 @@ export class HomeComponent implements OnInit,OnDestroy {
     }
   ]
 
+  retrieveSalles(): void {
+    this.sallesService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.salles = data;
+    });
+  }
 
-  onViewSalle(id:number){
+
+
+  onViewSalle(id){
     this.router.navigate(['/salles','view',id]);
   }
 

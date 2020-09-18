@@ -84,7 +84,7 @@
 								<h2>SALLES</h2>
 							</div>
 							<div class="events">
-								<div *ngFor="let salle of salles;let i=index;" class="events__item rounded light-bg">
+								<div *ngFor="let salle of salles | slice:0:3;let i=index;" class="events__item rounded light-bg">
 									<div class="events__content">
 										<div class="events__date">
 											<div class="date__left color-main">
@@ -100,7 +100,7 @@
 										</div>
 										<h5 class="events__meta">{{salle.nomSalle | truncatetext:5}}</h5>
 										<div class="events__link">
-											<a (click)="onViewSalle(i)" class="btn btn-maincolor">Plus d'infos</a>
+											<a (click)="onViewSalle(salle.key)" class="btn btn-maincolor">Plus d'infos</a>
 										</div>
 									</div>
 								</div>
