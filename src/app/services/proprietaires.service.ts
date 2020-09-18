@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { Subject } from 'rxjs';
 import { Proprietaire } from '../models/proprietaire.model';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +10,92 @@ import { Proprietaire } from '../models/proprietaire.model';
 
 export class ProprietairesService {
 
+  private dbPath = '/utilisateurs2';
+  usersRef: AngularFireList<Proprietaire> = null;
+
   prorietaires: Proprietaire[] = [];
   propriosSubject = new Subject<Proprietaire[]>();
-  constructor() { }
 
-  emitProprios(){
+  constructor(private db: AngularFireDatabase) {
+    this.usersRef = db.list(this.dbPath);
+   }
+
+  getAll(): AngularFireList<Proprietaire> {
+    return this.usersRef;
+  }
+
+  create(proprio: Proprietaire): any {
+    return this.usersRef.push(proprio);
+  }
+
+  update(key: string, value: any): Promise<void> {
+    return this.usersRef.update(key, value);
+  }
+
+  delete(key: string): Promise<void> {
+    return this.usersRef.remove(key);
+  }
+
+  deleteAll(): Promise<void> {
+    return this.usersRef.remove();
+  }
+
+  getOne(key){
+    return this.db.object('/utilisateurs2/'+key);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  emitProprios() {
     this.propriosSubject.next(this.prorietaires);
   }
 
-  saveProprios(){
+  saveProprios() {
     firebase.database().ref('/utilisateurs').set(this.prorietaires);
   }
 
-  updateProprio(id,proprioTOmodify:Proprietaire){
-    firebase.database().ref('/utilisateurs/'+id).set(proprioTOmodify);
+  updateProprio(id, proprioTOmodify: Proprietaire) {
+    firebase.database().ref('/utilisateurs/' + id).set(proprioTOmodify);
   }
 
-  getProprios(){
+  getProprios() {
     firebase.database().ref('/utilisateurs')
-      .on('value',(data)=>{
-        this.prorietaires = data.val()?data.val():[];
+      .on('value', (data) => {
+        this.prorietaires = data.val() ? data.val() : [];
         this.emitProprios();
       })
   }
 
-  getSingle(id){
+  getSingle(id) {
     return new Promise(
-      (resolve,reject)=>{
-        firebase.database().ref('/utilisateurs/'+id).once('value').then(
+      (resolve, reject) => {
+        firebase.database().ref('/utilisateurs/' + id).once('value').then(
           (data) => {
             resolve(data.val());
           },
@@ -48,25 +107,24 @@ export class ProprietairesService {
     )
   }
 
+  getUserDataByEmail(email) {
+    let leproprioEl = new Proprietaire('', '', '', '', '');
+    console.log("hryyyyyyyyyyyyyyyyyyyyyyyyyy");
+    const proprioIndexToReturn = this.prorietaires.findIndex(
+      (proprioEl) => {
+        console.log(proprioEl);
+        console.log(email);
+        if (proprioEl.email == email) {
+          //return true;
+          leproprioEl = proprioEl;
 
-    getUserDataByEmail(email){
-      let leproprioEl = new Proprietaire('','','','','');
-      console.log("hryyyyyyyyyyyyyyyyyyyyyyyyyy");
-      const proprioIndexToReturn = this.prorietaires.findIndex(
-        (proprioEl)=>{
-          console.log(proprioEl);
-          console.log(email);
-          if(proprioEl.email==email){
-            //return true;
-            leproprioEl = proprioEl;
-            
-          }
         }
-      )
-      this.emitProprios();
-      return leproprioEl;
+      }
+    )
+    this.emitProprios();
+    return leproprioEl;
 
-    }
+  }
 
   createNewProprio(newProprio: Proprietaire) {
     this.prorietaires.push(newProprio);
@@ -75,10 +133,10 @@ export class ProprietairesService {
     //return this.prorietaires.length-1;
   }
 
-  removeProrio(proprio: Proprietaire){
+  removeProrio(proprio: Proprietaire) {
     const proprioIndexToRemove = this.prorietaires.findIndex(
-      (proprioEl)=>{
-        if(proprioEl==proprio){
+      (proprioEl) => {
+        if (proprioEl == proprio) {
           return true;
         }
       }
@@ -87,26 +145,26 @@ export class ProprietairesService {
     this.saveProprios();
     this.emitProprios();
   }
-  
-  uploadFile(file:File){
+
+  uploadFile(file: File) {
     return new Promise(
-      (resolve,reject)=>{
+      (resolve, reject) => {
         const almostUniqueFileName = Date.now().toString();
         const upload = firebase.storage().ref()
-        .child('images/'+almostUniqueFileName+file.name)
-        .put(file);
+          .child('images/' + almostUniqueFileName + file.name)
+          .put(file);
         upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
-          ()=>{
+          () => {
             console.log('chargement en cours...')
           },
-          (error)=>{
+          (error) => {
             console.log('Erreur de chargement' + error);
             reject(error)
           },
-          ()=>{
+          () => {
             resolve(upload.snapshot.ref.getDownloadURL());
           }
-          )
+        )
       }
     )
   }
