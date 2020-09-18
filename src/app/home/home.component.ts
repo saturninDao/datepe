@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.retrieveSalles();
+    this.retrieveProprios();
+
   }
 
   carouselOptions = {
@@ -110,6 +112,18 @@ export class HomeComponent implements OnInit,OnDestroy {
       )
     ).subscribe(data => {
       this.salles = data;
+    });
+  }
+
+  retrieveProprios(): void {
+    this.propriosService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.proprios = data;
     });
   }
 
