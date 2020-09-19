@@ -47,4 +47,4 @@ Thumbs.db
 
 # My private files
 
-/src/environments
+./src/environments
