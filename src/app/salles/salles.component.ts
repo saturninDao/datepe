@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './salles.component.html',
   styleUrls: ['./salles.component.css']
 })
-export class SallesComponent implements OnInit,OnDestroy {
+export class SallesComponent implements OnInit, OnDestroy {
   salles: Salle[] = [];
   salleSubscriber: Subscription = new Subscription();
   defaultLazyImage = '../../assets/images/chargement.gif';
@@ -21,10 +21,8 @@ export class SallesComponent implements OnInit,OnDestroy {
   constructor(private sallesService: SallesService, private router: Router) { }
 
   ngOnInit(): void {
-      this.retrieveSalles();
+    this.retrieveSalles();
   }
-
-
 
   refreshList(): void {
     this.currentSalle = null;
@@ -49,21 +47,11 @@ export class SallesComponent implements OnInit,OnDestroy {
     this.currentIndex = index;
   }
 
-
-
-
-
-
-
-
-
-
-
-  onViewSalle(id:number){
-    this.router.navigate(['/salles','view',id]);
+  onViewSalle(id: number) {
+    this.router.navigate(['/salles', 'view', id]);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.salleSubscriber.unsubscribe();
   }
 }
